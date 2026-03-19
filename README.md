@@ -27,6 +27,41 @@ ETL pipeline analyzing how primary care physician shortages correlate with chron
 
 ## Data Sources
 
+- CDC PLACES
+  - Centers for Disease Control and Prevention (CDC)
+  - County-level
+  - Chronic disease burden, pre/post COVID
+
+- HRSA Health Professional Shortage Areas (HPSA)
+  - Health Resources & Services Administration (HRSA)
+  - County-level
+  - Shortage designations
+
+- HRSA Medically Underserved Areas/Populations (MUA/P)
+  - Health Resources & Services Administration (HRSA)
+  - County-level
+  - Overall medical underservice
+
+- HRSA Health Center Service Delivery and Look-Alike Sites (FQHCs)
+  - Health Resources & Services Administration (HRSA)
+  - Site-level (address), aggregated to county
+  - FQHC locations
+
+- County Health Rankings & Roadmaps (CHR)
+  - University of Wisconsin Population Health Institute
+  - County-level
+  - PCPs per capita, preventable hospitalizations, outcomes
+
+- US Census Bureau-American Community Survey (ACS)
+  - US Census Bureau
+  - County-level
+  - Insurance coverage, income
+
+- USDA Rural-Urban Continuum Codes (RUCC)
+  - USDA Economic Research Service (ERS)
+  - County-level
+  - Rural/urban classification
+
 ## Technologies
 
 - **Data Warehouse:** Snowflake
