@@ -1,0 +1,34 @@
+[0m18:16:12.680166 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x110418ad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1122534d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112253750>]}
+
+
+============================== 18:16:12.683474 | fa4cb980-3a46-42b6-b317-59f3356bd443 ==============================
+[0m18:16:12.683474 [info ] [MainThread]: Running with dbt=1.11.7
+[0m18:16:12.683820 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'quiet': 'False', 'log_format': 'default', 'use_experimental_parser': 'False', 'target_path': 'None', 'no_print': 'None', 'printer_width': '80', 'log_cache_events': 'False', 'static_parser': 'True', 'warn_error': 'None', 'partial_parse': 'True', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'invocation_command': 'dbt init healthcare_disparities_analytics', 'indirect_selection': 'eager', 'use_colors': 'True', 'introspect': 'True', 'empty': 'None', 'profiles_dir': '/Users/alinix/.dbt', 'fail_fast': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'write_json': 'True', 'log_path': 'logs', 'version_check': 'True'}
+[0m18:16:12.694209 [info ] [MainThread]: Creating dbt configuration folder at /Users/alinix/.dbt
+[0m18:16:12.695187 [debug] [MainThread]: Starter project path: /opt/homebrew/lib/python3.13/site-packages/dbt/include/starter_project
+[0m18:16:12.698609 [info ] [MainThread]: 
+Your new dbt project "healthcare_disparities_analytics" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m18:16:12.698774 [info ] [MainThread]: Setting up your profile.
+[0m18:16:21.797261 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m18:16:21.797553 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m18:16:21.797696 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m18:29:17.214556 [info ] [MainThread]: Profile healthcare_disparities_analytics written to /Users/alinix/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m18:29:17.264793 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 784.64404, "process_in_blocks": "0", "process_kernel_time": 0.224411, "process_mem_max_rss": "128516096", "process_out_blocks": "0", "process_user_time": 0.89133}
+[0m18:29:17.267326 [debug] [MainThread]: Command `dbt init` succeeded at 18:29:17.267078 after 784.65 seconds
+[0m18:29:17.268246 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x115a1c3e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11228c170>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1159d0f30>]}
+[0m18:29:17.268895 [debug] [MainThread]: Flushing usage events
+[0m18:29:17.724133 [debug] [MainThread]: An error was encountered while trying to flush usage events
