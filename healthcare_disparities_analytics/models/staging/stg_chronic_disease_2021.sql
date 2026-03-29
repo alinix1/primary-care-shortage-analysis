@@ -11,7 +11,7 @@ pivoted AS (
         STATEABBR,
         STATEDESC,
         LOCATIONNAME AS county_name,
-        LOCATIONID AS county_fips,
+        LPAD(CAST(LOCATIONID AS VARCHAR), 5, '0') AS county_fips,
         TOTALPOPULATION AS total_population,
 
         -- Chronic disease prevalence rates

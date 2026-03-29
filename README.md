@@ -55,15 +55,15 @@ The analysis aims to move beyond simply identifying where shortages exist to qua
 - County Health Rankings & Roadmaps (CHR)
   - Source: University of Wisconsin Population Health Institute
   - Geo: County-level
-  - Main metrics: PCPs per capita, preventable hospitalizations, Insurance coverage, income inequality, poverty rate, outcomes
+  - Main metrics: PCPs per capita, preventable hospitalizations, Insurance coverage, income inequality, poverty rate, population demographics
   - Key measures: Primary Care Physicians raw value, Ratio of population to primary care physicians, Other Primary Care Providers raw value, Ratio of population to primary care providers other than physicians, Preventable Hospital Stays raw value, Uninsured raw value, Income Inequality raw value, Children in Poverty raw value, Median Household Income raw value
-  - Useful measures: Preventable Hospital Stays (Black), Preventable Hospital Stays (White), Life Expectancy raw value, % Rural raw value, Population raw value, % Non-Hispanic Black raw value, % Hispanic raw value
+  - Useful measures: Preventable Hospital Stays with breakdowns by race (AIAN, Asian/Pacific Islander, Black, Hispanic, White), Life Expectancy raw value, % Rural raw value, Population raw value, % Non-Hispanic Black raw value, % Hispanic raw value
 
 - USDA Rural-Urban Continuum Codes (RUCC)
   - Source: USDA Economic Research Service (ERS)
   - Geo: County-level
   - Main metrics: Rural/urban classification
-  - Key measures: Attribute, Value -> RUCC_2023 code (1–9), rural/urban description, Population_2020
+  - Key measures: Attribute, Value -> RUCC_2023 (rural-urban continuum code (1-9 scale)), description (text description of rural/urban category), Population_20 (population)
 
 ## Technologies
 
