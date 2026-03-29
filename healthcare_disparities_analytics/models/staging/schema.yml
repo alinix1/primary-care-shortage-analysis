@@ -1,0 +1,159 @@
+version: 2
+
+models:
+  - name: stg_chronic_disease
+    description: "Cleaned and pivoted CDC PLACES 2022-2023 chronic disease data by county. Includes multi-morbidity indicators and disease burden categorization."
+    columns:
+      - name: county_fips
+        description: "Unique county identifier"
+        tests:
+          - not_null
+
+      - name: county_name
+        description: "County name"
+        tests:
+          - not_null
+
+      - name: stateabbr
+        description: "State abbreviation"
+        tests:
+          - not_null
+
+      - name: year
+        description: "Year of data collection"
+
+      - name: statedesc
+        description: "Full state name"
+
+      - name: disease_count
+        description: "Number of chronic disease measures available for this county"
+
+      - name: has_multimorbidity
+        description: "TRUE if county has 2+ chronic diseases reported"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+
+      - name: disease_burden_level
+        description: "Categorized burden: High, Moderate, Low, or Insufficient Data"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["High", "Moderate", "Low", "Insufficient Data"]
+
+      - name: diabetes_pct
+        description: "% adults diagnosed with diabetes (age-adjusted)"
+
+      - name: heart_disease_pct
+        description: "% adults with coronary heart disease (age-adjusted)"
+
+      - name: obesity_pct
+        description: "% adults with obesity (age-adjusted)"
+
+      - name: hypertension_pct
+        description: "% adults with high blood pressure (age-adjusted)"
+
+      - name: stroke_pct
+        description: "% adults who have had a stroke (age-adjusted)"
+
+      - name: arthritis_pct
+        description: "% adults with arthritis (age-adjusted)"
+
+      - name: cancer_pct
+        description: "% adults with cancer (non-skin) or melanoma (age-adjusted)"
+
+      - name: copd_pct
+        description: "% adults with chronic obstructive pulmonary disease (age-adjusted)"
+
+      - name: asthma_pct
+        description: "% adults with current asthma (age-adjusted)"
+
+      - name: depression_pct
+        description: "% adults with depression (age-adjusted)"
+
+      - name: high_cholesterol_pct
+        description: "% adults with high cholesterol (ever screened) (age-adjusted)"
+
+      - name: tooth_loss_pct
+        description: "% adults aged 65+ who have lost all teeth (age-adjusted)"
+
+      - name: total_population
+        description: "Total county population"
+
+  - name: stg_chronic_disease_2021
+    description: "Cleaned CDC PLACES 2018-2019 chronic disease data by county (pre-COVID baseline). Use alongside stg_chronic_disease for pre/post COVID trend analysis."
+    columns:
+      - name: county_fips
+        description: "Unique county identifier"
+        tests:
+          - not_null
+
+      - name: county_name
+        description: "County name"
+        tests:
+          - not_null
+
+      - name: stateabbr
+        description: "State abbreviation"
+        tests:
+          - not_null
+
+      - name: year
+        description: "Year of data collection (2018 or 2019)"
+
+      - name: disease_count
+        description: "Number of chronic disease measures available for this county"
+
+      - name: has_multimorbidity
+        description: "TRUE if county has 2+ chronic diseases reported"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+
+      - name: disease_burden_level
+        description: "Categorized burden: High, Moderate, Low, or Insufficient Data"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["High", "Moderate", "Low", "Insufficient Data"]
+
+      - name: diabetes_pct
+        description: "% adults diagnosed with diabetes (age-adjusted)"
+
+      - name: heart_disease_pct
+        description: "% adults with coronary heart disease (age-adjusted)"
+
+      - name: obesity_pct
+        description: "% adults with obesity (age-adjusted)"
+
+      - name: hypertension_pct
+        description: "% adults with high blood pressure (age-adjusted)"
+
+      - name: stroke_pct
+        description: "% adults who have had a stroke (age-adjusted)"
+
+      - name: arthritis_pct
+        description: "% adults with arthritis (age-adjusted)"
+
+      - name: cancer_pct
+        description: "% adults with cancer non-skin or melanoma (age-adjusted)"
+
+      - name: copd_pct
+        description: "% adults with COPD (age-adjusted)"
+
+      - name: asthma_pct
+        description: "% adults with current asthma (age-adjusted)"
+
+      - name: depression_pct
+        description: "% adults with depression (age-adjusted)"
+
+      - name: high_cholesterol_pct
+        description: "% adults with high cholesterol ever screened (age-adjusted)"
+
+      - name: tooth_loss_pct
+        description: "% adults aged 65+ who have lost all teeth (age-adjusted)"
+
+      - name: total_population
+        description: "Total county population"

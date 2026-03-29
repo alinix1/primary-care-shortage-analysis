@@ -9,3 +9,5 @@ data-raw/hrsa/
 data-raw/usda/
 data-raw/census/
 
+logs/
+*.log

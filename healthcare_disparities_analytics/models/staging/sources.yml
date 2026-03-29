@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: raw_data
+    database: PCP_SHORTAGE_ANALYTICS
+    schema: RAW_DATA
+    tables:
+      - name: CDC_PLACES_2025_RAW
+      - name: CDC_PLACES_2021_RAW
+      - name: COUNTY_HEALTH_RANKINGS_RAW
+      - name: HRSA_FQHC_RAW
+      - name: HRSA_HPSA_RAW
+      - name: HRSA_MUAP_RAW
