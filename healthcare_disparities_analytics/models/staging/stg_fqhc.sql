@@ -12,7 +12,11 @@ final AS (
         SITE_CITY                                                        AS city,
         SITE_STATE_ABBREVIATION                                         AS state_abbr,
         COMPLETE_COUNTY_NAME                                            AS county_name,
-        SITE_STATUS_DESCRIPTION                                         AS site_status
+        SITE_STATUS_DESCRIPTION                                         AS site_status, 
+        OPERATING_HOURS_PER_WEEK                                        AS operating_hours_per_week,
+        HEALTH_CENTER_TYPE_DESCRIPTION                                  AS health_center_type,
+        GEOCODING_ARTIFACT_ADDRESS_PRIMARY_X_COORDINATE                 AS longitude,
+        GEOCODING_ARTIFACT_ADDRESS_PRIMARY_Y_COORDINATE                 AS latitude
 
     FROM source
 )
