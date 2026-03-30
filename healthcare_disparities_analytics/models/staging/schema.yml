@@ -33,14 +33,16 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: [true, false]
+              arguments:
+                values: [true, false]
 
       - name: disease_burden_level
         description: "Categorized burden: High, Moderate, Low, or Insufficient Data"
         tests:
           - not_null
           - accepted_values:
-              values: ["High", "Moderate", "Low", "Insufficient Data"]
+              arguments:
+                values: ["High", "Moderate", "Low", "Insufficient Data"]
 
       - name: diabetes_pct
         description: "% adults diagnosed with diabetes (age-adjusted)"
@@ -110,14 +112,16 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: [true, false]
+              arguments:
+                values: [true, false]
 
       - name: disease_burden_level
         description: "Categorized burden: High, Moderate, Low, or Insufficient Data"
         tests:
           - not_null
           - accepted_values:
-              values: ["High", "Moderate", "Low", "Insufficient Data"]
+              arguments:
+                values: ["High", "Moderate", "Low", "Insufficient Data"]
 
       - name: diabetes_pct
         description: "% adults diagnosed with diabetes (age-adjusted)"
@@ -157,3 +161,104 @@ models:
 
       - name: total_population
         description: "Total county population"
+
+  - name: stg_hpsa
+    description: "Cleaned HRSA HPSA designation data by county. Includes shortage scores, designation status, and poverty indicators."
+    columns:
+      - name: county_fips
+        description: "5-digit county FIPS code"
+        tests:
+          - not_null
+
+      - name: hpsa_status
+        description: "HPSA designation status (e.g. Designated, Withdrawn)"
+
+      - name: hpsa_score
+        description: "HPSA score 0-25, higher = greater need"
+
+      - name: hpsa_degree_of_shortage
+        description: "Degree of shortage classification"
+
+      - name: hpsa_formal_ratio
+        description: "Population to PCP ratio"
+
+      - name: hpsa_shortage
+        description: "Number of additional FTE PCPs needed to remove HPSA designation"
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: true
+              where: "hpsa_shortage IS NOT NULL"
+
+      - name: rural_status
+        description: "Rural, Partially Rural, or Urban"
+
+      - name: pct_poverty
+        description: "% of population below 100% poverty line"
+
+      - name: is_hpsa_designated
+        description: "TRUE if county has active HPSA designation"
+        tests:
+          - not_null
+  - name: stg_muap
+    description: "Cleaned HRSA Medically Underserved Area/Population (MUAP) data by county. Includes IMU scores, provider ratios, and underserved flags."
+    columns:
+      - name: county_fips
+        description: "5-digit county FIPS code"
+        tests:
+          - not_null
+
+      - name: imu_score
+        description: "Index of Medical Underservice score (0-100, <=62 qualifies as underserved)"
+
+      - name: providers_per_1000
+        description: "Number of primary care providers per 1,000 population"
+
+      - name: pct_age_65_over
+        description: "% of population aged 65 and over"
+
+      - name: pct_poverty
+        description: "% of population with incomes at or below 100% federal poverty level"
+
+      - name: designated_population
+        description: "Total population in the designated MUA/P area"
+
+      - name: population_type
+        description: "Type of population designation (e.g. Geographic, Population Group)"
+
+      - name: is_medically_underserved
+        description: "TRUE if IMU score <= 62"
+        tests:
+          - not_null
+
+  - name: stg_fqhc
+    description: "Cleaned HRSA Federally Qualified Health Center (FQHC) site data. Active sites only, with county-level geographic identifiers."
+    columns:
+      - name: county_fips
+        description: "5-digit county FIPS code"
+        tests:
+          - not_null
+
+      - name: fqhc_name
+        description: "Name of the FQHC site"
+        tests:
+          - not_null
+
+      - name: city
+        description: "City where the FQHC site is located"
+
+      - name: state_abbr
+        description: "State abbreviation"
+        tests:
+          - not_null
+
+      - name: county_name
+        description: "County name"
+
+      - name: site_status
+        description: "Site status (always 'Active' due to source filter)"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["Active"]
