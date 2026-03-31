@@ -15,13 +15,22 @@ final AS (
 
         -- Preventable hospital stays (per 100,000 Medicare enrollees)
         CAST(PREVENTABLE_HOSPITAL_STAYS_RAW_VALUE AS FLOAT)        AS preventable_stays_rate,
+        CAST(PREVENTABLE_HOSPITAL_STAYS_CI_LOW AS FLOAT)                    AS preventable_stays_ci_low,
+        CAST(PREVENTABLE_HOSPITAL_STAYS_CI_HIGH AS FLOAT)                   AS preventable_stays_ci_high,
 
         -- By race/ethnicity (equity analysis)
         CAST("Preventable Hospital Stays (AIAN)" AS FLOAT)                  AS preventable_stays_aian,
         CAST("Preventable Hospital Stays (Asian/Pacific Islander)" AS FLOAT) AS preventable_stays_asian,
         CAST("Preventable Hospital Stays (Black)" AS FLOAT)                 AS preventable_stays_black,
         CAST("Preventable Hospital Stays (Hispanic)" AS FLOAT)              AS preventable_stays_hispanic,
-        CAST("Preventable Hospital Stays (White)" AS FLOAT)                 AS preventable_stays_white
+        CAST("Preventable Hospital Stays (White)" AS FLOAT)                 AS preventable_stays_white,
+
+        -- Mortality outcomes
+        CAST(LIFE_EXPECTANCY_RAW_VALUE AS FLOAT)                            AS life_expectancy,
+        CAST("Premature Age-Adjusted Mortality raw value" AS FLOAT)         AS premature_age_adj_mortality,
+        CAST(INFANT_MORTALITY_RAW_VALUE AS FLOAT)                           AS infant_mortality_rate,
+        CAST(CHILD_MORTALITY_RAW_VALUE AS FLOAT)                            AS child_mortality_rate
+
 
     FROM source
 )

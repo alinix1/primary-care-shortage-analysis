@@ -16,10 +16,13 @@ final AS (
         -- Population
         CAST(POPULATION_RAW_VALUE AS FLOAT)                    AS total_population,
 
+        -- Age  
+        ROUND(CAST("% 65 and Older raw value" AS FLOAT) * 100, 1)            AS pct_65_older,
+
         -- Income & poverty
-        CAST(MEDIAN_HOUSEHOLD_INCOME_RAW_VALUE AS FLOAT)       AS median_household_income,
+        CAST(MEDIAN_HOUSEHOLD_INCOME_RAW_VALUE AS FLOAT)                    AS median_household_income,
         ROUND(CAST(CHILDREN_IN_POVERTY_RAW_VALUE AS FLOAT) * 100, 1)        AS children_in_poverty_pct,
-        CAST(INCOME_INEQUALITY_RAW_VALUE AS FLOAT)          AS income_inequality_ratio,
+        ROUND(CAST(INCOME_INEQUALITY_RAW_VALUE AS FLOAT), 1)                AS income_inequality_ratio,
         ROUND(CAST(UNEMPLOYMENT_RAW_VALUE AS FLOAT) * 100, 1)               AS unemployment_pct,
 
         -- Insurance coverage
