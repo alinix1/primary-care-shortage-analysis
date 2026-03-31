@@ -26,7 +26,13 @@ pivoted AS (
         MAX(CASE WHEN MEASURE = 'High cholesterol among adults who have ever been screened' THEN DATA_VALUE END) AS high_cholesterol_pct,
         MAX(CASE WHEN MEASURE = 'Obesity among adults' THEN DATA_VALUE END) AS obesity_pct,
         MAX(CASE WHEN MEASURE = 'Stroke among adults' THEN DATA_VALUE END) AS stroke_pct,
-        MAX(CASE WHEN MEASURE = 'All teeth lost among adults aged >=65 years' THEN DATA_VALUE END) AS tooth_loss_pct
+        MAX(CASE WHEN MEASURE = 'All teeth lost among adults aged >=65 years' THEN DATA_VALUE END) AS tooth_loss_pct,
+        MAX(CASE WHEN MEASURE = 'Visits to doctor for routine checkup within the past year among adults' THEN DATA_VALUE END) AS routine_checkup_pct,
+        MAX(CASE WHEN MEASURE = 'No leisure-time physical activity among adults' THEN DATA_VALUE END) AS no_physical_activity_pct,
+        MAX(CASE WHEN MEASURE = 'Fair or poor self-rated health status among adults' THEN DATA_VALUE END) AS fair_poor_health_pct,
+        MAX(CASE WHEN MEASURE = 'Food insecurity in the past 12 months among adults' THEN DATA_VALUE END) AS food_insecurity_pct,
+        MAX(CASE WHEN MEASURE = 'Lack of reliable transportation in the past 12 months among adults' THEN DATA_VALUE END) AS no_transport_pct,
+        NULL AS kidney_disease_pct  -- not available in 2025 CDC PLACES release
 
     FROM source
     GROUP BY 1, 2, 3, 4, 5, 6
@@ -48,7 +54,8 @@ final AS (
             CASE WHEN hypertension_pct IS NOT NULL THEN 1 ELSE 0 END +
             CASE WHEN high_cholesterol_pct IS NOT NULL THEN 1 ELSE 0 END +
             CASE WHEN obesity_pct IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN stroke_pct IS NOT NULL THEN 1 ELSE 0 END
+            CASE WHEN stroke_pct IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN tooth_loss_pct IS NOT NULL THEN 1 ELSE 0 END
         ) AS disease_count,
 
         -- Multi-morbidity flag (2+ chronic diseases reported)
