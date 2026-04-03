@@ -14,7 +14,7 @@ final AS (
         RELEASE_YEAR                                                AS year,
 
         -- Preventable hospital stays (per 100,000 Medicare enrollees)
-        CAST(PREVENTABLE_HOSPITAL_STAYS_RAW_VALUE AS FLOAT)        AS preventable_stays_rate,
+        ROUND(CAST(PREVENTABLE_HOSPITAL_STAYS_RAW_VALUE AS FLOAT), 1)       AS preventable_stays_rate,
         CAST(PREVENTABLE_HOSPITAL_STAYS_CI_LOW AS FLOAT)                    AS preventable_stays_ci_low,
         CAST(PREVENTABLE_HOSPITAL_STAYS_CI_HIGH AS FLOAT)                   AS preventable_stays_ci_high,
 
@@ -26,10 +26,10 @@ final AS (
         CAST("Preventable Hospital Stays (White)" AS FLOAT)                 AS preventable_stays_white,
 
         -- Mortality outcomes
-        CAST(LIFE_EXPECTANCY_RAW_VALUE AS FLOAT)                            AS life_expectancy,
-        CAST("Premature Age-Adjusted Mortality raw value" AS FLOAT)         AS premature_age_adj_mortality,
-        CAST(INFANT_MORTALITY_RAW_VALUE AS FLOAT)                           AS infant_mortality_rate,
-        CAST(CHILD_MORTALITY_RAW_VALUE AS FLOAT)                            AS child_mortality_rate
+        ROUND(CAST(LIFE_EXPECTANCY_RAW_VALUE AS FLOAT), 1)                    AS life_expectancy,
+        ROUND(CAST("Premature Age-Adjusted Mortality raw value" AS FLOAT), 1) AS premature_age_adj_mortality,
+        ROUND(CAST(INFANT_MORTALITY_RAW_VALUE AS FLOAT), 1)                   AS infant_mortality_rate,
+        ROUND(CAST(CHILD_MORTALITY_RAW_VALUE AS FLOAT), 1)                    AS child_mortality_rate
 
 
     FROM source
