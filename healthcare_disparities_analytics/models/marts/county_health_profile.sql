@@ -39,6 +39,10 @@ fqhc AS (
     SELECT * FROM {{ ref('int_fqhc_by_county') }}
 ),
 
+rucc AS (
+    SELECT * FROM {{ ref('stg_rural_urban') }}
+),
+
 national_baseline AS (
     SELECT
         ROUND(AVG(preventable_stays_rate), 1)    AS national_avg_preventable_stays,
@@ -132,6 +136,11 @@ final AS (
         COALESCE(fqhc.fqhc_coverage_tier, 'No Coverage')      AS fqhc_coverage_tier,
         ROUND(fqhc.avg_operating_hours_per_week, 1)            AS fqhc_avg_hours_per_week,
 
+        -- RUCC rural/urban classification
+        rucc.rucc_code,
+        rucc.rucc_description,
+        rucc.urban_rural_category,
+
        -- Hospitalizations & mortality
         ROUND(hosp.preventable_stays_rate, 1)           AS preventable_stays_rate,
         ROUND(hosp.preventable_stays_aian, 1)           AS preventable_stays_aian,
@@ -178,6 +187,7 @@ final AS (
     LEFT JOIN hpsa                ON d.county_fips = hpsa.county_fips
     LEFT JOIN muap                ON d.county_fips = muap.county_fips
     LEFT JOIN fqhc                ON d.county_fips = fqhc.county_fips
+    LEFT JOIN rucc                ON d.county_fips = rucc.county_fips
     CROSS JOIN national_baseline nb
     WHERE d.county_fips IS NOT NULL
 )
