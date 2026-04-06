@@ -1,0 +1,116 @@
+version: 2
+
+models:
+  - name: int_hpsa_by_county
+    description: >
+      Aggregates stg_hpsa from one-row-per-designation to one-row-per-county.
+      Takes worst-case HPSA score and sums FTE/population across all designations.
+      Grain: one row per county_fips.
+    columns:
+      - name: county_fips
+        description: "5-digit county FIPS code (primary key)"
+        tests:
+          - not_null
+          - unique
+      - name: is_hpsa_designated
+        description: "1 if county has at least one active HPSA designation"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1]
+      - name: hpsa_score
+        description: "Highest HPSA score across all designations in the county (0-25)"
+      - name: hpsa_severity_tier
+        description: "Severity: Critical, High, Moderate, Low, Not Designated"
+        tests:
+          - accepted_values:
+              values: ["Critical", "High", "Moderate", "Low", "Not Designated"]
+      - name: hpsa_designation_count
+        description: "Number of HPSA designations in this county"
+        tests:
+          - not_null
+      - name: hpsa_fte_total
+        description: "Total FTE physicians needed to remove shortage designation"
+      - name: hpsa_designated_population
+        description: "Total population across all HPSA designations in county"
+      - name: hpsa_underserved_population
+        description: "Total estimated underserved population in county"
+      - name: hpsa_avg_pct_poverty
+        description: "Average poverty rate across all HPSA designations"
+      - name: has_rural_designation
+        description: "1 if any HPSA designation in county is rural"
+        tests:
+          - accepted_values:
+              values: [0, 1]
+
+  - name: int_muap_by_county
+    description: >
+      Aggregates stg_muap from one-row-per-sub-area to one-row-per-county.
+      Takes worst-case (lowest) IMU score. IMU range 0-100; below 62 = underserved.
+      Grain: one row per county_fips.
+    columns:
+      - name: county_fips
+        description: "5-digit county FIPS code (primary key)"
+        tests:
+          - not_null
+          - unique
+      - name: is_medically_underserved
+        description: "1 if county has at least one MUA/P designation"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1]
+      - name: imu_score_worst
+        description: "Lowest IMU score across all designations (lower = more underserved)"
+      - name: imu_score_avg
+        description: "Average IMU score across all designations"
+      - name: muap_severity_tier
+        description: "Severity: Severely Underserved, Highly Underserved, Underserved, Not Designated"
+        tests:
+          - accepted_values:
+              values:
+                [
+                  "Severely Underserved",
+                  "Highly Underserved",
+                  "Underserved",
+                  "Not Designated",
+                ]
+      - name: muap_designation_count
+        description: "Number of MUA/P designations in this county"
+        tests:
+          - not_null
+      - name: muap_designated_population
+        description: "Total population across all MUA/P designations"
+
+  - name: int_fqhc_by_county
+    description: >
+      Aggregates stg_fqhc from one-row-per-site to one-row-per-county.
+      Active sites only. Counts sites, organizations, and coverage metrics.
+      Grain: one row per county_fips.
+    columns:
+      - name: county_fips
+        description: "5-digit county FIPS code (primary key)"
+        tests:
+          - not_null
+          - unique
+      - name: has_fqhc
+        description: "1 if county has at least one active FQHC site"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1]
+      - name: fqhc_site_count
+        description: "Total number of active FQHC sites in county"
+        tests:
+          - not_null
+      - name: fqhc_org_count
+        description: "Number of distinct FQHC organizations in county"
+      - name: fqhc_coverage_tier
+        description: "Coverage level: Minimal, Moderate, Strong"
+        tests:
+          - accepted_values:
+              values: ["Minimal", "Moderate", "Strong"]
+      - name: fqhc_cities_covered
+        description: "Number of distinct cities with FQHC coverage in county"
+      - name: avg_operating_hours_per_week
+        description: "Average weekly operating hours across all FQHC sites"
