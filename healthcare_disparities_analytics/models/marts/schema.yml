@@ -1,0 +1,199 @@
+version: 2
+
+models:
+  - name: county_health_profile
+    description: >
+      Master county-level analytics table. Combines all staging and intermediate
+      models into a single county profile. Includes disease burden, access barriers,
+      demographics, HPSA/MUAP/FQHC designations, preventable hospitalizations,
+      excess stays calculations, and racial disparity gaps.
+      Grain: one row per county_fips. Foundation for all downstream analysis.
+    columns:
+      - name: county_fips
+        description: "5-digit county FIPS code (primary key)"
+        tests:
+          - not_null
+          - unique
+      - name: county_name
+        description: "County name"
+        tests:
+          - not_null
+      - name: state_abbr
+        description: "2-letter state abbreviation"
+        tests:
+          - not_null
+      - name: is_hpsa_designated
+        description: "1 if county has HPSA shortage designation"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+      - name: is_medically_underserved
+        description: "1 if county has MUA/P designation"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+      - name: is_dual_designated
+        description: "1 if county has both HPSA and MUA/P designations"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+      - name: has_fqhc
+        description: "1 if county has at least one active FQHC site"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+      - name: disease_burden_level
+        description: "Chronic disease burden: High, Moderate, Low, Insufficient Data"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["High", "Moderate", "Low", "Insufficient Data"]
+      - name: hpsa_severity_tier
+        description: "HPSA severity: Critical, High, Moderate, Low, Not Designated"
+        tests:
+          - accepted_values:
+              arguments:
+                values:
+                  ["Critical", "High", "Moderate", "Low", "Not Designated"]
+      - name: excess_preventable_stays
+        description: >
+          Preventable hospitalization rate minus national average.
+          Positive = above average burden. Negative = below average.
+      - name: est_excess_stays_count
+        description: >
+          Estimated absolute number of excess preventable stays.
+          Known limitation: uses total population as denominator
+          but rate is per 100k Medicare enrollees.
+      - name: black_white_hosp_gap
+        description: >
+          Difference between Black and White preventable hospitalization rates.
+          Positive = Black rate is higher. NULL if either value is missing.
+      - name: hispanic_white_hosp_gap
+        description: >
+          Difference between Hispanic and White preventable hospitalization rates.
+          NULL if either value is missing.
+      - name: urban_rural_category
+        description: "USDA RUCC classification: Metro, Micropolitan, Rural"
+      - name: rucc_code
+        description: "USDA Rural-Urban Continuum Code 1-9 (1=largest metro, 9=most rural)"
+
+  - name: access_impact_analysis
+    description: >
+      Outcomes analysis table examining the relationship between access barriers
+      and health outcomes. Builds on county_health_profile adding shortage groupings,
+      urban/rural classification, FQHC effectiveness flags, racial disparity flag,
+      and a composite vulnerability score (0-5).
+      Grain: one row per county_fips.
+    columns:
+      - name: county_fips
+        description: "5-digit county FIPS code (primary key)"
+        tests:
+          - not_null
+          - unique
+      - name: shortage_group
+        description: "Shortage severity: Dual Designated, Critical HPSA, Moderate-High HPSA, Low HPSA, Not Designated"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  [
+                    "Dual Designated",
+                    "Critical HPSA",
+                    "Moderate-High HPSA",
+                    "Low HPSA",
+                    "Not Designated",
+                  ]
+      - name: urban_rural_class
+        description: "Urban/rural classification based on pct_rural: Urban, Mixed, Rural"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["Urban", "Mixed", "Rural"]
+      - name: fqhc_access_group
+        description: "FQHC effectiveness grouping combining shortage status and FQHC presence"
+        tests:
+          - accepted_values:
+              arguments:
+                values:
+                  [
+                    "Shortage + FQHC",
+                    "Shortage, No FQHC",
+                    "No Shortage + FQHC",
+                    "No Shortage, No FQHC",
+                  ]
+      - name: vulnerability_score
+        description: >
+          Composite score 0-5: HPSA designated + medically underserved +
+          no FQHC + above national avg hosp + high disease burden.
+        tests:
+          - not_null
+      - name: high_burden_low_access
+        description: "1 if county has high disease burden AND HPSA designation"
+        tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+      - name: has_racial_disparity
+        description: "1 if Black preventable hospitalization rate exceeds White rate"
+        tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+
+  - name: priority_counties_ranking
+    description: >
+      Final prioritization model ranking all counties by intervention opportunity.
+      Uses a weighted 0-100 priority score aligned to the County Health Rankings
+      methodology (UW Population Health Institute). Weights: shortage 20%,
+      PCP gap 20%, outcomes 25%, disease burden 25%, uninsured 10%.
+      Grain: one row per county_fips.
+    columns:
+      - name: county_fips
+        description: "5-digit county FIPS code (primary key)"
+        tests:
+          - not_null
+          - unique
+      - name: priority_rank
+        description: "National rank by priority score (1 = highest priority county in US)"
+        tests:
+          - not_null
+      - name: priority_rank_in_state
+        description: "Rank within the county's state"
+        tests:
+          - not_null
+      - name: priority_score
+        description: >
+          Weighted composite priority score (0-100) aligned to
+          County Health Rankings methodology. Higher = greater intervention need.
+        tests:
+          - not_null
+      - name: intervention_tier
+        description: >
+          Priority tier: Tier 1 Critical (>=80), Tier 2 High (>=60),
+          Tier 3 Moderate (>=40), Tier 4 Low (>=20), Tier 5 Adequate (<20)
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - "Tier 1 - Critical Priority"
+                  - "Tier 2 - High Priority"
+                  - "Tier 3 - Moderate Priority"
+                  - "Tier 4 - Low Priority"
+                  - "Tier 5 - Adequate Access"
+      - name: admissions_preventable
+        description: >
+          Estimated hospitalizations preventable if county reached national
+          average rate. Known limitation: uses total population as denominator;
+          rate is per 100k Medicare enrollees.
+        tests:
+          - not_null
