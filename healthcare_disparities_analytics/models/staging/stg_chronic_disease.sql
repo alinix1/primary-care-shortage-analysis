@@ -3,6 +3,7 @@ WITH source AS (
     FROM {{ source('raw_data', 'CDC_PLACES_2025_RAW') }}
     WHERE LOCATIONNAME IS NOT NULL  -- filter 80 null locations
     AND DATA_VALUE_TYPE = 'Age-adjusted prevalence' -- filters by 'Age-adjusted prevalence' and removes crude prevalence duplicates
+    AND YEAR = 2023  -- keep most recent year only
 ),
 
 pivoted AS (

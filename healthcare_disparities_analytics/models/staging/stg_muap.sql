@@ -10,6 +10,7 @@ final AS (
     SELECT
         LPAD(CAST(COMMON_STATE_COUNTY_FIPS_CODE AS VARCHAR), 5, '0')   AS county_fips,
         COMPLETE_COUNTY_NAME                                           AS county_name,
+        TRUE                                                           AS is_medically_underserved,
 
         CAST(IMU_SCORE AS FLOAT)                                       AS imu_score,
         CAST(PROVIDERS_PER_1000_POPULATION AS FLOAT)                   AS providers_per_1000,

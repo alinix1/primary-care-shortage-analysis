@@ -19,7 +19,8 @@ final AS (
         RURAL_STATUS                                                   AS rural_status,
         "% of Population Below 100% Poverty"                           AS pct_poverty,
         HPSA_ESTIMATED_UNDERSERVED_POPULATION                          AS hpsa_underserved_population,
-        HPSA_DESIGNATION_POPULATION                                    AS hpsa_designation_population
+        HPSA_DESIGNATION_POPULATION                                    AS hpsa_designation_population,
+        TRUE                                                           AS is_hpsa_designated
         
     FROM source
 )
