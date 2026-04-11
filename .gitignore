@@ -11,3 +11,7 @@ data-raw/census/
 
 logs/
 *.log
+data-processed/*.csv
+healthcare_disparities_analytics/logs/
+healthcare_disparities_analytics/target/
+healthcare_disparities_analytics/dbt_packages/
