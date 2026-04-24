@@ -180,7 +180,7 @@ fig_fqhc.update_layout(
 bar_data = pd.DataFrame(
     {
         "HPSA_QUARTILE": ["Q1 (Lowest)", "Q2", "Q3", "Q4 (Highest)"],
-        "AVG_EXCESS_STAYS": [-221.3, -100.0, -13.0, 259.2],
+        "AVG_EXCESS_STAYS": [-219.5, -108.0, 0.5, 251.8],
     }
 )
 
@@ -262,11 +262,11 @@ conditions = [
     "Obesity",
     "Hypertension",
     "COPD",
-    "Depression",
+    "Stroke",
 ]
 
-hpsa_values = [11.33, 6.05, 37.81, 33.81, 7.12, 24.20]
-non_hpsa_values = [9.98, 5.41, 36.32, 31.52, 6.02, 23.06]
+hpsa_values = [11.33, 6.05, 37.81, 33.81, 7.12, 3.32]
+non_hpsa_values = [9.98, 5.41, 36.32, 31.52, 6.02, 2.88]
 
 disease_bar_data = pd.DataFrame(
     {
@@ -495,7 +495,7 @@ app.layout = html.Div(
                             },
                         ),
                         html.H2(
-                            "+259.2", style={"color": "#38BDF8", "margin": "4px 0 0"}
+                            "250+", style={"color": "#38BDF8", "margin": "4px 0 0"}
                         ),
                     ],
                 ),
@@ -636,7 +636,7 @@ app.layout = html.Div(
                     },
                 ),
                 html.P(
-                    "HPSA score vs excess stays: r = 0.18 — counties in the highest shortage quartile average 259.2 excess stays above the national average",
+                    "Counties in the highest shortage quartile average 251.8 excess stays above the national average",
                     style={
                         "color": "#64748B",
                         "fontSize": "11px",
