@@ -71,7 +71,7 @@ before development and built using Plotly Dash with a custom dark theme color pa
   Alaska; 90% are Critical HPSA tier, 9 out of 10 are dual-designated (HPSA + MUA/P)
 
 - **Scale of the problem is significant** — 2,599 HPSA-designated counties, 671 counties
-  with high disease burden, and counties in the highest shortage quartile average +259.2
+  with high disease burden, and counties in the highest shortage quartile average 250+
   excess preventable stays above the national average. St. Louis, MO alone has an estimated
   3,379 preventable admissions annually
 
