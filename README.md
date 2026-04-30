@@ -54,7 +54,7 @@ in Snowflake to answer each research question, including...
 Dashboard layout was planned in [Figma](https://www.figma.com/design/W51QZYKUW8KN1E2wpoLOE4/Primary-Care-Shortage-Dashboard?node-id=0-1&t=LQVn5JJzD6nr7jeb-1)
 before development and built using Plotly Dash with a custom dark theme color palette.
 
-> **Note:** Final dataset covers 2,957 of 3,143 US counties. Approximately 186 counties
+> **Note:** Final dataset covers 2,957 of 3,144 US counties. Approximately 186 counties
 > were excluded due to missing data in one or more source files during the join process.
 
 ## Key Insights
