@@ -345,9 +345,9 @@ Then open `http://127.0.0.1:8050` in your browser.
 
 ## Roadmap
 
-- **Pre/Post COVID Trend Analysis** — compare chronic disease prevalence between 2021 and 2025 releases
+- **Pre/post COVID trend analysis** — compare chronic disease prevalence between 2021 and 2025 releases
 - **Regional patterns dashboard integration** — incorporate state-level summary data into the Plotly dashboard
-- **Racial disparities deep dive** — expand analysis of Black-White and Hispanic-White hospitalization gaps by region and shortage status
+- **Multivariate regression or logistic regression analysis** to model excess preventable stays across multiple predictors simultaneously and quantify independent contributions
 
 ## Author
 
