@@ -33,16 +33,14 @@ models:
         tests:
           - not_null
           - accepted_values:
-              arguments:
-                values: [true, false]
+              values: [true, false]
 
       - name: disease_burden_level
         description: "Categorized burden: High, Moderate, Low, or Insufficient Data"
         tests:
           - not_null
           - accepted_values:
-              arguments:
-                values: ["High", "Moderate", "Low", "Insufficient Data"]
+              values: ["High", "Moderate", "Low", "Insufficient Data"]
 
       - name: diabetes_pct
         description: "% adults diagnosed with diabetes (age-adjusted)"
@@ -112,16 +110,14 @@ models:
         tests:
           - not_null
           - accepted_values:
-              arguments:
-                values: [true, false]
+              values: [true, false]
 
       - name: disease_burden_level
         description: "Categorized burden: High, Moderate, Low, or Insufficient Data"
         tests:
           - not_null
           - accepted_values:
-              arguments:
-                values: ["High", "Moderate", "Low", "Insufficient Data"]
+              values: ["High", "Moderate", "Low", "Insufficient Data"]
 
       - name: diabetes_pct
         description: "% adults diagnosed with diabetes (age-adjusted)"
@@ -187,6 +183,7 @@ models:
         tests:
           - dbt_utils.accepted_range:
               min_value: 0
+              max_value: 100
               inclusive: true
               where: "hpsa_shortage IS NOT NULL"
 
@@ -260,5 +257,39 @@ models:
         tests:
           - not_null
           - accepted_values:
-              arguments:
-                values: ["Active"]
+              values: ["Active"]
+  - name: stg_demographics
+    description: "Cleaned county-level demographic data."
+    columns:
+      - name: county_fips
+        description: "5-digit county FIPS code"
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_hospitalizations
+    description: "Cleaned county-level hospitalization data."
+    columns:
+      - name: county_fips
+        description: "5-digit county FIPS code"
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_primary_care_access
+    description: "Cleaned county-level primary care access data."
+    columns:
+      - name: county_fips
+        description: "5-digit county FIPS code"
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_rural_urban
+    description: "Cleaned USDA rural-urban continuum codes by county."
+    columns:
+      - name: county_fips
+        description: "5-digit county FIPS code"
+        tests:
+          - not_null
+          - unique

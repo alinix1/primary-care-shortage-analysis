@@ -6,7 +6,7 @@
 
 ## Overview
 
-A multi-source data analytics project — encompassing ETL pipeline, data warehouse, and
+A multi-source data analytics project — encompassing ELT pipeline, data warehouse, and
 interactive dashboard — examining how primary care shortages correlate with
 chronic disease burden and preventable hospitalizations across 3,144 US counties using
 Snowflake, dbt, SQL, and Plotly.
