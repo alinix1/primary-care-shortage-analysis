@@ -24,7 +24,7 @@ coverage.
 - Do primary care HPSA counties have higher rates of multiple chronic diseases?
 - What is the relationship between primary care shortages and preventable hospitalization rates in HPSA-designated counties?
 - Which counties have the combination of primary care shortage, high disease prevalence, and preventable hospitalizations?
-- Do counties with higher FQHC density show lower preventable hospitalization rates, even when controlling for primary care shortage status?
+- Do counties with higher FQHC density show lower preventable hospitalization rates?
 - What is the geographic distribution of counties with coinciding primary care shortages and high chronic disease burden?
 
 ## Methodology
@@ -39,7 +39,7 @@ in Snowflake to answer each research question, including...
 - Chronic disease prevalence comparisons between HPSA and non-HPSA counties
 - Pearson correlation and quartile analysis of shortage severity vs hospitalization rates
 - Triple burden county identification (shortage + high disease + excess hospitalizations)
-- FQHC effectiveness controlling for shortage status
+- FQHC effectiveness by shortage status (categorical group comparison)
 - Predictors of preventable hospitalizations (disease burden, PCP ratio, poverty, race, rurality)
 - Geographic distribution of shortage + high disease burden counties by state
 
@@ -60,20 +60,20 @@ before development and built using Plotly Dash with a custom dark theme color pa
 ## Key Insights
 
 - **HPSA counties show consistently higher chronic disease burden** across all 12
-  conditions analyzed, with hypertension showing the largest gap (+2.29 pp vs non-HPSA)
+  conditions analyzed, with hypertension showing the largest gap (+2.29 percentage points higher vs non-HPSA).
 
-- **FQHCs alone are insufficient to offset hospitalization burden** they may be treating the sickest counties but can't fully compensate for systemic PCP gaps
+- **FQHCs alone are insufficient to offset hospitalization burden** they may be treating the sickest counties but can't fully compensate for systemic PCP gaps.
 
-- **The shortage itself may be contributing to worse chronic disease management over time** PCP shortages correlate more strongly with chronic disease than hospitalizations (diabetes r=0.39 vs hospitalization r=0.18), suggesting shortages drive worse disease management over time
+- **The shortage itself may be contributing to worse chronic disease management over time** PCP shortages correlate more strongly with chronic disease than hospitalizations (diabetes r=0.39 vs hospitalization r=0.18), suggesting shortages drive worse disease management over time.
 
 - **Triple burden counties are concentrated in the rural South and Midwest** — top
   priority counties span Georgia, Mississippi, Louisiana, Missouri, Arkansas, Florida, and
-  Alaska; 90% are Critical HPSA tier, 9 out of 10 are dual-designated (HPSA + MUA/P)
+  Alaska; 69 classified as high priority (Tier 2), 9 out of 10 are dual-designated (HPSA + MUA/P).
 
 - **Scale of the problem is significant** — 2,599 HPSA-designated counties, 671 counties
   with high disease burden, and counties in the highest shortage quartile average 250+
   excess preventable stays above the national average. St. Louis, MO alone has an estimated
-  3,379 preventable admissions annually
+  3,379 preventable admissions annually.
 
 ## Data Sources
 
@@ -205,7 +205,7 @@ County-level priority ranking dataset for targeting intervention resources.
 
 ### regional_patterns.csv
 
-State-level summary aggregating county-level shortage and health outcome metrics.
+State-level aggregation summary for county-level shortage and health outcome metrics.
 
 | Column                   | Description                                             | Type    |
 | ------------------------ | ------------------------------------------------------- | ------- |
@@ -338,10 +338,10 @@ Then open `http://127.0.0.1:8050` in your browser.
 
 ![Dashboard](assets/images/choropleth-maps.png)
 
-- **Interactive Plotly dashboard** with choropleth maps, bar charts, scatter plots, table, and heat map visualizing shortage severity, disease burden, and preventable hospitalizations
-- **Jupyter notebook** with full end-to-end analysis workflow including SQL queries, statistical correlations, and key findings
 - **dbt pipeline** with staging, intermediate, and marts layers transforming 6 raw data sources into analytical datasets
 - **4 processed datasets** exported as CSV for reproducibility (`county_health_profile`, `access_impact_analysis`, `priority_counties_ranking`, `regional_patterns`)
+- **Interactive Plotly dashboard** with choropleth maps, bar charts, scatter plots, table, and heat map visualizing shortage severity, disease burden, and preventable hospitalizations
+- **Jupyter notebook** with full end-to-end analysis workflow including SQL queries, statistical correlations, and key findings
 
 ## Roadmap
 
