@@ -59,7 +59,7 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 ## Key Insights
 
-- **HPSA counties show consistently higher chronic disease burden** across all 12
+- **HPSA counties show consistently higher chronic disease burden** across all 11
   conditions analyzed, with hypertension showing the largest gap (+2.29 percentage points higher vs non-HPSA).
 
 - **FQHCs alone are insufficient to offset hospitalization burden** they may be treating the sickest counties but can't fully compensate for systemic PCP gaps.
