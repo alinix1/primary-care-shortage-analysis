@@ -1,8 +1,8 @@
--- Analysis: FQHC density vs preventable hospitalization rates controlling for shortage status
+-- Analysis: FQHC density vs preventable hospitalization rates (categorical group comparison)
 -- Description: Examines whether FQHC presence reduces preventable hospitalizations
 --              both overall and within shortage/non-shortage county groups
 -- Tables: county_health_profile, access_impact_analysis
--- Last updated: 2026-04-10
+-- Last updated: 2026-05-07
 
 -- 1. Overall: FQHC presence vs avg excess preventable stays
 SELECT

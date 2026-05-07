@@ -64,14 +64,13 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 - **FQHCs alone are insufficient to offset hospitalization burden** they may be treating the sickest counties but can't fully compensate for systemic PCP gaps.
 
-- **The shortage itself may be contributing to worse chronic disease management over time** PCP shortages correlate more strongly with chronic disease than hospitalizations (diabetes r=0.39 vs hospitalization r=0.18), suggesting shortages drive worse disease management over time.
+- **The shortage itself may be contributing to worse chronic disease management over time** PCP shortages correlate more strongly with chronic disease than hospitalizations (diabetes r=0.38 vs hospitalization r=0.18), suggesting shortages drive worse disease management over time.
 
-- **Triple burden counties are concentrated in the rural South and Midwest** — top
-  priority counties span Georgia, Mississippi, Louisiana, Missouri, Arkansas, Florida, and
-  Alaska; 69 classified as high priority (Tier 2), 9 out of 10 are dual-designated (HPSA + MUA/P).
+- **Triple burden counties are concentrated in the rural South and Appalachia** — top
+  priority counties span VA, AL, GA, MS, IL, NE, IN, AR, OK, SD, LA, ND, TX, MO, KS; 69 classified as high priority (Tier 2), 8 out of 10 are dual-designated (HPSA + MUA/P).
 
 - **Scale of the problem is significant** — 2,599 HPSA-designated counties, 671 counties
-  with high disease burden, and counties in the highest shortage quartile average 250+
+  with high disease burden, and counties in the highest shortage quartile average 272+
   excess preventable stays above the national average. St. Louis, MO alone has an estimated
   3,379 preventable admissions annually.
 
