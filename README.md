@@ -144,7 +144,7 @@ Primary analytical dataset with health, demographic, and access metrics for all 
 | COUNTY_FIPS              | 5-digit Federal Information Processing Standards county code (primary key)        | string  |
 | COUNTY_NAME              | County name                                                                       | string  |
 | STATE_ABBR               | Two-letter state abbreviation                                                     | string  |
-| TOTAL_POPULATION         | Total county population                                                           | integer |
+| TOTAL_POPULATION         | Total county population                                                           | float   |
 | DISEASE_BURDEN_LEVEL     | Chronic disease burden classification (Low / Moderate / High / Insufficient Data) | string  |
 | DISEASE_COUNT            | Number of chronic conditions with above-average prevalence                        | integer |
 | DIABETES_PCT             | % of adults with diabetes                                                         | float   |
@@ -160,13 +160,16 @@ Primary analytical dataset with health, demographic, and access metrics for all 
 | IS_DUAL_DESIGNATED       | 1 if county has both HPSA and MUA/P designation                                   | integer |
 | HAS_FQHC                 | 1 if county has at least one Federally Qualified Health Center                    | integer |
 | FQHC_SITE_COUNT          | Number of FQHC sites in county                                                    | integer |
-| EXCESS_PREVENTABLE_STAYS | Avg preventable hospital stays above/below national average                       | float   |
+| EXCESS_PREVENTABLE_STAYS | Excess preventable stays relative to national average (positive = above, negative = below) | float   |
 | ABOVE_NATIONAL_AVG_HOSP  | 1 if county exceeds national average preventable hospitalizations                 | integer |
 | URBAN_RURAL_CATEGORY     | Rural/urban classification (Metro / Micropolitan / Rural)                         | string  |
 | UNINSURED_PCT            | % of population without health insurance                                          | float   |
 | CHILDREN_IN_POVERTY_PCT  | % of children living in poverty                                                   | float   |
 | MEDIAN_HOUSEHOLD_INCOME  | Median household income in USD                                                    | float   |
-
+| EST_EXCESS_STAYS_COUNT   | Estimated total preventable admissions if county reached national average         | float   |
+| BLACK_WHITE_HOSP_GAP     | Difference in preventable stay rates between Black and White populations          | float   | 
+| HISPANIC_WHITE_HOSP_GAP  | Difference in preventable stay rates between Hispanic and White populations       | float   | 
+| IMU_SCORE_WORST          | Medically Underserved Area index score (worst designation in county)              | float   | 
 ---
 
 ### access_impact_analysis.csv
