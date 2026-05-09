@@ -43,7 +43,7 @@ in Snowflake to answer each research question, including...
 - Predictors of preventable hospitalizations (disease burden, PCP ratio, poverty, race, rurality)
 - Geographic distribution of shortage + high disease burden counties by state
 
-**Data Export & Visualization** — analytical outputs were exported as CSV to
+**Data Export & Visualization** analytical outputs were exported as CSV to
 `data-processed/` for use in the Plotly dashboard:
 
 - `county_health_profile.csv`
@@ -178,14 +178,12 @@ Focused dataset for analyzing access barriers and hospitalization outcomes, with
 
 | Column                  | Description                                                                            | Type    |
 | ----------------------- | -------------------------------------------------------------------------------------- | ------- |
-| SHORTAGE_GROUP          | Shortage + FQHC combination category                                                   | string  |
-| FQHC_ACCESS_GROUP       | FQHC access classification                                                             | string  |
-| HIGH_BURDEN_LOW_ACCESS  | 1 if county has high disease burden and low PCP access                                 | integer |
-| HAS_RACIAL_DISPARITY    | 1 if county has significant Black-White or Hispanic-White hospitalization gap          | integer |
-| VULNERABILITY_SCORE     | Composite score (0-5) combining shortage, disease burden, and outcome measures         | integer |
-| BLACK_WHITE_HOSP_GAP    | Difference in preventable hospitalization rates between Black and White populations    | float   |
-| HISPANIC_WHITE_HOSP_GAP | Difference in preventable hospitalization rates between Hispanic and White populations | float   |
-
+| **SHORTAGE_GROUP**      | HPSA severity classification (Dual Designated, Critical, Moderate-High, Low, Not Designated) | string  |
+| **FQHC_ACCESS_GROUP**   | County classification based on combination of HPSA designation and FQHC presence (Shortage + FQHC, Shortage No FQHC, No Shortage + FQHC, No Shortage No FQHC)                                                                           | string  |
+| **HIGH_BURDEN_LOW_ACCESS**  | 1 if county has high disease burden and low PCP access                             | integer |
+| **HAS_RACIAL_DISPARITY**| 1 if county has significant Black-White or Hispanic-White hospitalization gap          | integer |
+| **VULNERABILITY_SCORE** | Composite score (0-5) combining shortage, disease burden, and outcome measures         | integer |
+| **URBAN_RURAL_CLASS**| Derived urban/rural classification based on pct_rural                                     | string  |
 ---
 
 ### priority_counties_ranking.csv
@@ -200,8 +198,10 @@ County-level priority ranking dataset for targeting intervention resources.
 | SHORTAGE_SCORE         | Sub-score for PCP shortage severity                       | float   |
 | DISEASE_SCORE          | Sub-score for chronic disease burden                      | float   |
 | OUTCOME_SCORE          | Sub-score for preventable hospitalization outcomes        | float   |
-| INTERVENTION_TIER      | Priority tier for intervention (Tier 1 / Tier 2 / Tier 3) | string  |
+| INTERVENTION_TIER      | Priority tier for intervention (Tier 1 / Tier 2 / Tier 3 / Tier 4 / Tier 5) | string  |
 | ADMISSIONS_PREVENTABLE | Estimated number of preventable admissions                | float   |
+| PCP_GAP_SCORE          | Sub-score for PCP access gap (higher = fewer PCPs)        | float   | 
+| UNINSURED_SCORE        | Sub-score for uninsured burden                            | float   |
 
 ---
 
@@ -212,6 +212,7 @@ State-level aggregation summary for county-level shortage and health outcome met
 | Column                   | Description                                             | Type    |
 | ------------------------ | ------------------------------------------------------- | ------- |
 | STATE_ABBR               | Two-letter state abbreviation                           | string  |
+| STATE_NAME               | Full state name                                         | string  | 
 | TOTAL_COUNTIES           | Total number of counties in state                       | integer |
 | HPSA_COUNTIES            | Number of HPSA-designated counties                      | integer |
 | MUAP_COUNTIES            | Number of MUA/P-designated counties                     | integer |
