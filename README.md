@@ -33,7 +33,7 @@ Data from 6 sources was ingested into Snowflake and transformed using a dbt pipe
 with staging, intermediate, and mart layers. County-level metrics were joined on FIPS
 codes to create a unified analytical dataset covering 2,957 US counties.
 
-**SQL Analysis** — queries were drafted in VSCode in the `/analyses` folder and executed
+**SQL Analysis** queries were drafted in VSCode in the `/analyses` folder and executed
 in Snowflake to answer each research question, including...
 
 - Chronic disease prevalence comparisons between HPSA and non-HPSA counties
@@ -69,7 +69,7 @@ before development and built using Plotly Dash with a custom dark theme color pa
 - **Triple burden counties are concentrated in the rural South and Appalachia** — top
   priority counties span VA, AL, GA, MS, IL, NE, IN, AR, OK, SD, LA, ND, TX, MO, KS; 69 classified as high priority (Tier 2), 8 out of 10 are dual-designated (HPSA + MUA/P).
 
-- **Scale of the problem is significant** — 2,599 HPSA-designated counties, 671 counties
+- **Scale of the problem is significant** findings point to 2,599 HPSA-designated counties, 671 counties
   with high disease burden, and counties in the highest shortage quartile average 272+
   excess preventable stays above the national average. St. Louis, MO alone has an estimated
   3,379 preventable admissions annually.
