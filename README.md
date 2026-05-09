@@ -178,12 +178,12 @@ Focused dataset for analyzing access barriers and hospitalization outcomes, with
 
 | Column                  | Description                                                                            | Type    |
 | ----------------------- | -------------------------------------------------------------------------------------- | ------- |
-| **SHORTAGE_GROUP**      | HPSA severity classification (Dual Designated, Critical, Moderate-High, Low, Not Designated) | string  |
-| **FQHC_ACCESS_GROUP**   | County classification based on combination of HPSA designation and FQHC presence (Shortage + FQHC, Shortage No FQHC, No Shortage + FQHC, No Shortage No FQHC)                                                                           | string  |
-| **HIGH_BURDEN_LOW_ACCESS**  | 1 if county has high disease burden and low PCP access                             | integer |
-| **HAS_RACIAL_DISPARITY**| 1 if county has significant Black-White or Hispanic-White hospitalization gap          | integer |
-| **VULNERABILITY_SCORE** | Composite score (0-5) combining shortage, disease burden, and outcome measures         | integer |
-| **URBAN_RURAL_CLASS**| Derived urban/rural classification based on pct_rural                                     | string  |
+| SHORTAGE_GROUP      | HPSA severity classification (Dual Designated, Critical, Moderate-High, Low, Not Designated) | string  |
+| FQHC_ACCESS_GROUP   | County classification based on combination of HPSA designation and FQHC presence (Shortage + FQHC, Shortage No FQHC, No Shortage + FQHC, No Shortage No FQHC)                                                                          | string  |
+| HIGH_BURDEN_LOW_ACCESS  | 1 if county has high disease burden and low PCP access                             | integer |
+| HAS_RACIAL_DISPARITY | 1 if county has significant Black-White or Hispanic-White hospitalization gap         | integer |
+| VULNERABILITY_SCORE | Composite score (0-5) combining shortage, disease burden, and outcome measures         | integer |
+| URBAN_RURAL_CLASS | Derived urban/rural classification based on pct_rural                                    | string  |
 ---
 
 ### priority_counties_ranking.csv
