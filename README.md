@@ -144,6 +144,7 @@ Primary analytical dataset with health, demographic, and access metrics for all 
 | COUNTY_FIPS              | 5-digit Federal Information Processing Standards county code (primary key)        | string  |
 | COUNTY_NAME              | County name                                                                       | string  |
 | STATE_ABBR               | Two-letter state abbreviation                                                     | string  |
+| StATE_NAME               | Full state name                                                                   | string  | 
 | TOTAL_POPULATION         | Total county population                                                           | float   |
 | DISEASE_BURDEN_LEVEL     | Chronic disease burden classification (Low / Moderate / High / Insufficient Data) | string  |
 | DISEASE_COUNT            | Number of chronic conditions with above-average prevalence                        | integer |
@@ -170,6 +171,13 @@ Primary analytical dataset with health, demographic, and access metrics for all 
 | BLACK_WHITE_HOSP_GAP     | Difference in preventable stay rates between Black and White populations          | float   | 
 | HISPANIC_WHITE_HOSP_GAP  | Difference in preventable stay rates between Hispanic and White populations       | float   | 
 | IMU_SCORE_WORST          | Medically Underserved Area index score (worst designation in county)              | float   | 
+| PREVENTABLE_STAYS_RATE   | Peventable hospital stays per 100,000 population                                  | float   | 
+| LIFE_EXPECTANCY          | Average life expectancy at birth in years                                         | integer | 
+| POP_PER_PCP              | County population per primary care physician                                      | float   | 
+| FQHC_COVERAGE_TIER       | FQHC density classification relative to population (No Coverage / Low / Moderate / High)| integer | 
+| PCT_RURAL                | % of county population living in rural areas                                      | float   | 
+| RUCC_CODE                | USDA Rural-Urban Continuum Code (1-9, lower = more urban)                         | integer | 
+| [CONDITION]_PCT          | % of adults with the given chronic condition; depression, stroke, asthma, high cholesterol, cancer, arthritis| float | 
 ---
 
 ### access_impact_analysis.csv
