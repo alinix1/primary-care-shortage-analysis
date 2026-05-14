@@ -26,10 +26,23 @@ ranked AS (
             ORDER BY COALESCE(hpsa_score, 0) ASC
         ) * 100, 1)                                             AS shortage_score,
 
-        -- 2. Disease burden (more conditions = higher priority)
+        -- 2. Disease burden (composite of all disease severity rates)
         ROUND(PERCENT_RANK() OVER (
-            ORDER BY COALESCE(disease_count, 0) ASC
-        ) * 100, 1)                                             AS disease_score,
+            ORDER BY (
+                COALESCE(diabetes_pct, 0) +
+                COALESCE(hypertension_pct, 0) +
+                COALESCE(heart_disease_pct, 0) +
+                COALESCE(obesity_pct, 0) +
+                COALESCE(copd_pct, 0) +
+                COALESCE(depression_pct, 0) +
+                COALESCE(stroke_pct, 0) +
+                COALESCE(cancer_pct, 0) +
+                COALESCE(arthritis_pct, 0) +
+                COALESCE(asthma_pct, 0) +
+                COALESCE(high_cholesterol_pct, 0)
+            ) ASC
+        ) * 100, 1) 
+        AS disease_score,                                          
 
         -- 3. Hospitalization outcome (higher excess stays = higher priority)
         ROUND(PERCENT_RANK() OVER (
@@ -126,6 +139,13 @@ final AS (
         hypertension_pct,
         heart_disease_pct,
         obesity_pct,
+        copd_pct,
+        depression_pct,
+        stroke_pct,
+        cancer_pct,
+        arthritis_pct,
+        asthma_pct,
+        high_cholesterol_pct,
 
         -- Demographics
         pct_rural,

@@ -52,8 +52,14 @@ final AS (
         diabetes_pct,
         hypertension_pct,
         heart_disease_pct,
-        copd_pct,
         obesity_pct,
+        copd_pct,
+        depression_pct,
+        stroke_pct,
+        cancer_pct,
+        arthritis_pct,
+        asthma_pct,
+        high_cholesterol_pct,
 
         -- Demographics
         pct_rural,
