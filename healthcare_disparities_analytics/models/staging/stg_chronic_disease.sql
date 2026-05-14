@@ -32,8 +32,7 @@ pivoted AS (
         MAX(CASE WHEN MEASURE = 'No leisure-time physical activity among adults' THEN DATA_VALUE END) AS no_physical_activity_pct,
         MAX(CASE WHEN MEASURE = 'Fair or poor self-rated health status among adults' THEN DATA_VALUE END) AS fair_poor_health_pct,
         MAX(CASE WHEN MEASURE = 'Food insecurity in the past 12 months among adults' THEN DATA_VALUE END) AS food_insecurity_pct,
-        MAX(CASE WHEN MEASURE = 'Lack of reliable transportation in the past 12 months among adults' THEN DATA_VALUE END) AS no_transport_pct,
-        NULL AS kidney_disease_pct  -- not available in 2025 CDC PLACES release
+        MAX(CASE WHEN MEASURE = 'Lack of reliable transportation in the past 12 months among adults' THEN DATA_VALUE END) AS no_transport_pct
 
     FROM source
     GROUP BY 1, 2, 3, 4, 5, 6

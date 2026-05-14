@@ -284,6 +284,13 @@ models:
         tests:
           - not_null
           - unique
+      - name: pop_per_pcp
+        description: "Ratio of population to primary care physicians. Null when zero physicians present."
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: false
+              where: "pop_per_pcp IS NOT NULL"
 
   - name: stg_rural_urban
     description: "Cleaned USDA rural-urban continuum codes by county."

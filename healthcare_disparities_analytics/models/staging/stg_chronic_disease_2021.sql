@@ -27,7 +27,6 @@ pivoted AS (
         MAX(CASE WHEN MEASURE = 'Obesity among adults aged >=18 years' THEN DATA_VALUE END) AS obesity_pct,
         MAX(CASE WHEN MEASURE = 'Stroke among adults aged >=18 years' THEN DATA_VALUE END) AS stroke_pct,
         MAX(CASE WHEN MEASURE = 'All teeth lost among adults aged >=65 years' THEN DATA_VALUE END) AS tooth_loss_pct,
-        MAX(CASE WHEN MEASURE = 'Chronic kidney disease among adults aged >=18 years' THEN DATA_VALUE END) AS kidney_disease_pct,
 
           -- Access & lifestyle indicators (matched to 2025 where possible)
         MAX(CASE WHEN MEASURE = 'Visits to doctor for routine checkup within the past year among adults aged >=18 years' THEN DATA_VALUE END) AS routine_checkup_pct,
@@ -56,8 +55,7 @@ final AS (
             CASE WHEN hypertension_pct IS NOT NULL THEN 1 ELSE 0 END +
             CASE WHEN high_cholesterol_pct IS NOT NULL THEN 1 ELSE 0 END +
             CASE WHEN obesity_pct IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN stroke_pct IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN kidney_disease_pct IS NOT NULL THEN 1 ELSE 0 END
+            CASE WHEN stroke_pct IS NOT NULL THEN 1 ELSE 0 END
         ) AS disease_count,
 
         -- Multi-morbidity flag (2+ chronic diseases reported)
@@ -74,8 +72,7 @@ final AS (
                 CASE WHEN high_cholesterol_pct IS NOT NULL THEN 1 ELSE 0 END +
                 CASE WHEN obesity_pct IS NOT NULL THEN 1 ELSE 0 END +
                 CASE WHEN stroke_pct IS NOT NULL THEN 1 ELSE 0 END +
-                CASE WHEN tooth_loss_pct IS NOT NULL THEN 1 ELSE 0 END +
-                CASE WHEN kidney_disease_pct IS NOT NULL THEN 1 ELSE 0 END
+                CASE WHEN tooth_loss_pct IS NOT NULL THEN 1 ELSE 0 END
 
             ) >= 2 THEN TRUE 
             ELSE FALSE 

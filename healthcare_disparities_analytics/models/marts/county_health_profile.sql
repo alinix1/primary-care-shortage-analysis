@@ -84,7 +84,6 @@ final AS (
         d.obesity_pct,
         d.depression_pct,
         d.stroke_pct,
-        d.kidney_disease_pct,
         d.high_cholesterol_pct,
         d.cancer_pct,
         d.arthritis_pct,

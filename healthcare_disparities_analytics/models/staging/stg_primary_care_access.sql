@@ -16,11 +16,27 @@ final AS (
         -- Provider ratios (population per provider)
         ROUND(CAST(PRIMARY_CARE_PHYSICIANS_RAW_VALUE AS FLOAT) * 100000, 1)                           AS pcp_per_100k,
         ROUND(CAST(OTHER_PRIMARY_CARE_PROVIDERS_RAW_VALUE AS FLOAT) * 100000, 1)                      AS other_pcp_per_100k,
- 
-        ROUND(CAST("Ratio of population to primary care physicians." AS FLOAT), 1)                         AS pop_per_pcp,
-        ROUND(CAST("Ratio of population to primary care providers other than physicians." AS FLOAT), 1)    AS pop_per_other_pcp,
-        ROUND(CAST("Ratio of population to mental health providers." AS FLOAT), 1)                         AS pop_per_mental_health,
-        ROUND(CAST("Ratio of population to dentists." AS FLOAT), 1)                                        AS pop_per_dentist
+        
+        -- Provider ratios (population per provider) - nulled when <= 0 (zero/no providers)
+        ROUND(CASE 
+            WHEN CAST("Ratio of population to primary care physicians." AS FLOAT) <= 0 THEN NULL
+            ELSE CAST("Ratio of population to primary care physicians." AS FLOAT)
+        END, 1)                                                                      AS pop_per_pcp,
+
+        ROUND(CASE 
+            WHEN CAST("Ratio of population to primary care providers other than physicians." AS FLOAT) <= 0 THEN NULL
+            ELSE CAST("Ratio of population to primary care providers other than physicians." AS FLOAT)
+        END, 1)                                                                      AS pop_per_other_pcp,
+
+        ROUND(CASE 
+            WHEN CAST("Ratio of population to mental health providers." AS FLOAT) <= 0 THEN NULL
+            ELSE CAST("Ratio of population to mental health providers." AS FLOAT)
+        END, 1)                                                                      AS pop_per_mental_health,
+
+        ROUND(CASE 
+            WHEN CAST("Ratio of population to dentists." AS FLOAT) <= 0 THEN NULL
+            ELSE CAST("Ratio of population to dentists." AS FLOAT)
+        END, 1)                                      AS pop_per_dentist
 
     FROM chr_source
 )
