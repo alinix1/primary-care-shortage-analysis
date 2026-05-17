@@ -345,6 +345,7 @@ Then open `http://127.0.0.1:8050` in your browser.
 - **Week 2:** dbt models (staging, intermediate, and marts)
 - **Week 3:** SQL analysis, interactive dashboard visualization development
 - **Week 4:** Documentation, portfolio preparation
+- **Week 5:** Exploratory Data Analysis (EDA), statistical significance testing, and ad-hoc findings
 
 ## Deliverables
 
