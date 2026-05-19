@@ -37,7 +37,7 @@ codes to create a unified analytical dataset covering 2,957 US counties.
 in Snowflake to answer each research question, including...
 
 - Chronic disease prevalence comparisons between HPSA and non-HPSA counties
-- Pearson and Spearman correlation and quartile analysis of shortage severity and chronic disease burden vs hospitalization rates
+- Pearson and Spearman correlation and quartile analysis of shortage severity vs hospitalization rates
 - Triple burden county identification (shortage + high disease + excess hospitalizations)
 - FQHC effectiveness by shortage status (categorical group comparison)
 - Predictors of preventable hospitalizations (disease burden, PCP ratio, poverty, race, rurality)
