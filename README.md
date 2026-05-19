@@ -37,7 +37,7 @@ codes to create a unified analytical dataset covering 2,957 US counties.
 in Snowflake to answer each research question, including...
 
 - Chronic disease prevalence comparisons between HPSA and non-HPSA counties
-- Pearson correlation and quartile analysis of shortage severity vs hospitalization rates
+- Pearson and Spearman correlation and quartile analysis of shortage severity and chronic disease burden vs hospitalization rates
 - Triple burden county identification (shortage + high disease + excess hospitalizations)
 - FQHC effectiveness by shortage status (categorical group comparison)
 - Predictors of preventable hospitalizations (disease burden, PCP ratio, poverty, race, rurality)
@@ -139,77 +139,79 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 Primary analytical dataset with health, demographic, and access metrics for all 2,957 US counties.
 
-| Column                   | Description                                                                       | Type    |
-| ------------------------ | --------------------------------------------------------------------------------- | ------- |
-| COUNTY_FIPS              | 5-digit Federal Information Processing Standards county code (primary key)        | string  |
-| COUNTY_NAME              | County name                                                                       | string  |
-| STATE_ABBR               | Two-letter state abbreviation                                                     | string  |
-| STATE_NAME               | Full state name                                                                   | string  | 
-| TOTAL_POPULATION         | Total county population                                                           | float   |
-| DISEASE_BURDEN_LEVEL     | Chronic disease burden classification (Low / Moderate / High / Insufficient Data) | string  |
-| DISEASE_COUNT            | Number of chronic conditions with above-average prevalence                        | integer |
-| DIABETES_PCT             | % of adults with diabetes                                                         | float   |
-| HYPERTENSION_PCT         | % of adults with high blood pressure                                              | float   |
-| HEART_DISEASE_PCT        | % of adults with coronary heart disease                                           | float   |
-| COPD_PCT                 | % of adults with COPD                                                             | float   |
-| OBESITY_PCT              | % of adults with obesity                                                          | float   |
-| PCP_PER_100K             | Primary care physicians per 100,000 population                                    | float   |
-| IS_HPSA_DESIGNATED       | 1 if county is a Health Professional Shortage Area                                | integer |
-| HPSA_SCORE               | HPSA severity score (0-25, higher = more severe shortage)                         | integer |
-| HPSA_SEVERITY_TIER       | Categorical shortage tier (No Shortage / Low / Moderate / High / Critical)        | string  |
-| IS_MEDICALLY_UNDERSERVED | 1 if county is a Medically Underserved Area/Population                            | integer |
-| IS_DUAL_DESIGNATED       | 1 if county has both HPSA and MUA/P designation                                   | integer |
-| HAS_FQHC                 | 1 if county has at least one Federally Qualified Health Center                    | integer |
-| FQHC_SITE_COUNT          | Number of FQHC sites in county                                                    | integer |
-| EXCESS_PREVENTABLE_STAYS | Excess preventable stays relative to national average (positive = above, negative = below) | float   |
-| ABOVE_NATIONAL_AVG_HOSP  | 1 if county exceeds national average preventable hospitalizations                 | integer |
-| URBAN_RURAL_CATEGORY     | Rural/urban classification (Metro / Micropolitan / Rural)                         | string  |
-| UNINSURED_PCT            | % of population without health insurance                                          | float   |
-| CHILDREN_IN_POVERTY_PCT  | % of children living in poverty                                                   | float   |
-| MEDIAN_HOUSEHOLD_INCOME  | Median household income in USD                                                    | float   |
-| EST_EXCESS_STAYS_COUNT   | Estimated total preventable admissions if county reached national average         | float   |
-| BLACK_WHITE_HOSP_GAP     | Difference in preventable stay rates between Black and White populations          | float   | 
-| HISPANIC_WHITE_HOSP_GAP  | Difference in preventable stay rates between Hispanic and White populations       | float   | 
-| IMU_SCORE_WORST          | Medically Underserved Area index score (worst designation in county)              | float   | 
-| PREVENTABLE_STAYS_RATE   | Preventable hospital stays per 100,000 population                                 | float   | 
-| LIFE_EXPECTANCY          | Average life expectancy at birth in years                                         | float   | 
-| POP_PER_PCP              | County population per primary care physician                                      | float   | 
-| FQHC_COVERAGE_TIER       | FQHC density classification relative to population (No Coverage / Low / Moderate / High)| string | 
-| PCT_RURAL                | % of county population living in rural areas                                      | float   | 
-| RUCC_CODE                | USDA Rural-Urban Continuum Code (1-9, lower = more urban)                         | integer | 
-| [CONDITION]_PCT          | % of adults with the given chronic condition; depression, stroke, asthma, high cholesterol, cancer, arthritis| float | 
+| Column                   | Description                                                                                                   | Type    |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------- | ------- |
+| COUNTY_FIPS              | 5-digit Federal Information Processing Standards county code (primary key)                                    | string  |
+| COUNTY_NAME              | County name                                                                                                   | string  |
+| STATE_ABBR               | Two-letter state abbreviation                                                                                 | string  |
+| STATE_NAME               | Full state name                                                                                               | string  |
+| TOTAL_POPULATION         | Total county population                                                                                       | float   |
+| DISEASE_BURDEN_LEVEL     | Chronic disease burden classification (Low / Moderate / High / Insufficient Data)                             | string  |
+| DISEASE_COUNT            | Number of chronic conditions with above-average prevalence                                                    | integer |
+| DIABETES_PCT             | % of adults with diabetes                                                                                     | float   |
+| HYPERTENSION_PCT         | % of adults with high blood pressure                                                                          | float   |
+| HEART_DISEASE_PCT        | % of adults with coronary heart disease                                                                       | float   |
+| COPD_PCT                 | % of adults with COPD                                                                                         | float   |
+| OBESITY_PCT              | % of adults with obesity                                                                                      | float   |
+| PCP_PER_100K             | Primary care physicians per 100,000 population                                                                | float   |
+| IS_HPSA_DESIGNATED       | 1 if county is a Health Professional Shortage Area                                                            | integer |
+| HPSA_SCORE               | HPSA severity score (0-25, higher = more severe shortage)                                                     | integer |
+| HPSA_SEVERITY_TIER       | Categorical shortage tier (No Shortage / Low / Moderate / High / Critical)                                    | string  |
+| IS_MEDICALLY_UNDERSERVED | 1 if county is a Medically Underserved Area/Population                                                        | integer |
+| IS_DUAL_DESIGNATED       | 1 if county has both HPSA and MUA/P designation                                                               | integer |
+| HAS_FQHC                 | 1 if county has at least one Federally Qualified Health Center                                                | integer |
+| FQHC_SITE_COUNT          | Number of FQHC sites in county                                                                                | integer |
+| EXCESS_PREVENTABLE_STAYS | Excess preventable stays relative to national average (positive = above, negative = below)                    | float   |
+| ABOVE_NATIONAL_AVG_HOSP  | 1 if county exceeds national average preventable hospitalizations                                             | integer |
+| URBAN_RURAL_CATEGORY     | Rural/urban classification (Metro / Micropolitan / Rural)                                                     | string  |
+| UNINSURED_PCT            | % of population without health insurance                                                                      | float   |
+| CHILDREN_IN_POVERTY_PCT  | % of children living in poverty                                                                               | float   |
+| MEDIAN_HOUSEHOLD_INCOME  | Median household income in USD                                                                                | float   |
+| EST_EXCESS_STAYS_COUNT   | Estimated total preventable admissions if county reached national average                                     | float   |
+| BLACK_WHITE_HOSP_GAP     | Difference in preventable stay rates between Black and White populations                                      | float   |
+| HISPANIC_WHITE_HOSP_GAP  | Difference in preventable stay rates between Hispanic and White populations                                   | float   |
+| IMU_SCORE_WORST          | Medically Underserved Area index score (worst designation in county)                                          | float   |
+| PREVENTABLE_STAYS_RATE   | Preventable hospital stays per 100,000 population                                                             | float   |
+| LIFE_EXPECTANCY          | Average life expectancy at birth in years                                                                     | float   |
+| POP_PER_PCP              | County population per primary care physician                                                                  | float   |
+| FQHC_COVERAGE_TIER       | FQHC density classification relative to population (No Coverage / Low / Moderate / High)                      | string  |
+| PCT_RURAL                | % of county population living in rural areas                                                                  | float   |
+| RUCC_CODE                | USDA Rural-Urban Continuum Code (1-9, lower = more urban)                                                     | integer |
+| [CONDITION]\_PCT         | % of adults with the given chronic condition; depression, stroke, asthma, high cholesterol, cancer, arthritis | float   |
+
 ---
 
 ### access_impact_analysis.csv
 
 Focused dataset for analyzing access barriers and hospitalization outcomes, with derived grouping variables.
 
-| Column                  | Description                                                                            | Type    |
-| ----------------------- | -------------------------------------------------------------------------------------- | ------- |
-| SHORTAGE_GROUP      | HPSA severity classification (Dual Designated, Critical, Moderate-High, Low, Not Designated) | string  |
-| FQHC_ACCESS_GROUP   | County classification based on combination of HPSA designation and FQHC presence (Shortage + FQHC, Shortage No FQHC, No Shortage + FQHC, No Shortage No FQHC)                                                                          | string  |
-| HIGH_BURDEN_LOW_ACCESS  | 1 if county has high disease burden and low PCP access                             | integer |
-| HAS_RACIAL_DISPARITY | 1 if county has significant Black-White or Hispanic-White hospitalization gap         | integer |
-| VULNERABILITY_SCORE | Composite score (0-5) combining shortage, disease burden, and outcome measures         | integer |
-| URBAN_RURAL_CLASS | Derived urban/rural classification based on pct_rural                                    | string  |
+| Column                 | Description                                                                                                                                                   | Type    |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| SHORTAGE_GROUP         | HPSA severity classification (Dual Designated, Critical, Moderate-High, Low, Not Designated)                                                                  | string  |
+| FQHC_ACCESS_GROUP      | County classification based on combination of HPSA designation and FQHC presence (Shortage + FQHC, Shortage No FQHC, No Shortage + FQHC, No Shortage No FQHC) | string  |
+| HIGH_BURDEN_LOW_ACCESS | 1 if county has high disease burden and low PCP access                                                                                                        | integer |
+| HAS_RACIAL_DISPARITY   | 1 if county has significant Black-White or Hispanic-White hospitalization gap                                                                                 | integer |
+| VULNERABILITY_SCORE    | Composite score (0-5) combining shortage, disease burden, and outcome measures                                                                                | integer |
+| URBAN_RURAL_CLASS      | Derived urban/rural classification based on pct_rural                                                                                                         | string  |
+
 ---
 
 ### priority_counties_ranking.csv
 
 County-level priority ranking dataset for targeting intervention resources.
 
-| Column                 | Description                                               | Type    |
-| ---------------------- | --------------------------------------------------------- | ------- |
-| PRIORITY_RANK          | National priority rank (1 = highest need)                 | integer |
-| PRIORITY_RANK_IN_STATE | Priority rank within state                                | integer |
-| PRIORITY_SCORE         | Composite priority score across all dimensions            | float   |
-| SHORTAGE_SCORE         | Sub-score for PCP shortage severity                       | float   |
-| DISEASE_SCORE          | Sub-score for chronic disease burden                      | float   |
-| OUTCOME_SCORE          | Sub-score for preventable hospitalization outcomes        | float   |
+| Column                 | Description                                                                 | Type    |
+| ---------------------- | --------------------------------------------------------------------------- | ------- |
+| PRIORITY_RANK          | National priority rank (1 = highest need)                                   | integer |
+| PRIORITY_RANK_IN_STATE | Priority rank within state                                                  | integer |
+| PRIORITY_SCORE         | Composite priority score across all dimensions                              | float   |
+| SHORTAGE_SCORE         | Sub-score for PCP shortage severity                                         | float   |
+| DISEASE_SCORE          | Sub-score for chronic disease burden                                        | float   |
+| OUTCOME_SCORE          | Sub-score for preventable hospitalization outcomes                          | float   |
 | INTERVENTION_TIER      | Priority tier for intervention (Tier 1 / Tier 2 / Tier 3 / Tier 4 / Tier 5) | string  |
-| ADMISSIONS_PREVENTABLE | Estimated number of preventable admissions                | float   |
-| PCP_GAP_SCORE          | Sub-score for PCP access gap (higher = fewer PCPs)        | float   | 
-| UNINSURED_SCORE        | Sub-score for uninsured burden                            | float   |
+| ADMISSIONS_PREVENTABLE | Estimated number of preventable admissions                                  | float   |
+| PCP_GAP_SCORE          | Sub-score for PCP access gap (higher = fewer PCPs)                          | float   |
+| UNINSURED_SCORE        | Sub-score for uninsured burden                                              | float   |
 
 ---
 
@@ -220,7 +222,7 @@ State-level aggregation summary for county-level shortage and health outcome met
 | Column                   | Description                                             | Type    |
 | ------------------------ | ------------------------------------------------------- | ------- |
 | STATE_ABBR               | Two-letter state abbreviation                           | string  |
-| STATE_NAME               | Full state name                                         | string  | 
+| STATE_NAME               | Full state name                                         | string  |
 | TOTAL_COUNTIES           | Total number of counties in state                       | integer |
 | HPSA_COUNTIES            | Number of HPSA-designated counties                      | integer |
 | MUAP_COUNTIES            | Number of MUA/P-designated counties                     | integer |
@@ -346,6 +348,12 @@ Then open `http://127.0.0.1:8050` in your browser.
 - **Week 3:** SQL analysis, interactive dashboard visualization development
 - **Week 4:** Documentation, portfolio preparation
 - **Week 5:** Exploratory Data Analysis (EDA), statistical significance testing, and ad-hoc findings
+
+## Pipeline Architecture
+
+<!-- ![Pipeline Architecture](assets/images/Miro_Architecture.png) -->
+
+<img src="assets/images/Miro_Architecture.png" width="900"/>
 
 ## Deliverables
 
