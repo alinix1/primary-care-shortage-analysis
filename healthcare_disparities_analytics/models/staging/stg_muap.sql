@@ -2,7 +2,7 @@ WITH source AS (
     SELECT *
     FROM {{ source('raw_data', 'HRSA_MUAP_RAW') }}
     WHERE COMMON_STATE_COUNTY_FIPS_CODE IS NOT NULL
-        AND POPULATION_TYPE = 'Medically Underserved Area' -- exclude subgroup MUP designations
+        AND POPULATION_TYPE = 'Medically Underserved Area' -- exclude subgroup MUAP designations
         AND MUAP_STATUS_DESCRIPTION = 'Designated'
 ),
 

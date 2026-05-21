@@ -13,7 +13,7 @@ WITH county_data AS (
         ch.disease_burden_level,
         pr.priority_score
     FROM {{ ref('county_health_profile') }} ch
-    JOIN {{ ref('priority_counties_ranking') }} pr
+    LEFT JOIN {{ ref('priority_counties_ranking') }} pr
         ON ch.county_fips = pr.county_fips
 )
 

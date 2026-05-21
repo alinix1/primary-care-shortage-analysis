@@ -14,8 +14,10 @@
 
 WITH base AS (
     SELECT * FROM {{ ref('access_impact_analysis') }}
+    WHERE preventable_stays_suppressed = 0
+        AND pcp_data_suppressed = 0
+        AND uninsured_suppressed = 0
 ),
-
 -- Calculate percentile ranks for each component
 ranked AS (
     SELECT
@@ -40,23 +42,23 @@ ranked AS (
                 COALESCE(arthritis_pct, 0) +
                 COALESCE(asthma_pct, 0) +
                 COALESCE(high_cholesterol_pct, 0)
-            ) ASC
+            ) ASC 
         ) * 100, 1) 
         AS disease_score,                                          
 
         -- 3. Hospitalization outcome (higher excess stays = higher priority)
         ROUND(PERCENT_RANK() OVER (
-            ORDER BY COALESCE(excess_preventable_stays, 0) ASC
+            ORDER BY excess_preventable_stays ASC
         ) * 100, 1)                                             AS outcome_score,
 
         -- 4. PCP access gap (fewer PCPs = higher priority; invert rank)
         ROUND((1 - PERCENT_RANK() OVER (
-            ORDER BY COALESCE(pcp_per_100k, 0) DESC NULLS LAST
+            ORDER BY pcp_per_100k DESC 
         )) * 100, 1)                                            AS pcp_gap_score,
 
         -- 5. Uninsured burden (higher uninsured = higher priority)
         ROUND(PERCENT_RANK() OVER (
-            ORDER BY COALESCE(uninsured_pct, 0) ASC
+            ORDER BY uninsured_pct ASC 
         ) * 100, 1)                                             AS uninsured_score
 
     FROM base

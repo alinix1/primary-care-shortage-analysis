@@ -13,9 +13,15 @@ final AS (
         NAME                                                                         AS county_name,
         RELEASE_YEAR                                                                 AS year,
 
-        -- Provider ratios (population per provider)
-        ROUND(CAST(PRIMARY_CARE_PHYSICIANS_RAW_VALUE AS FLOAT) * 100000, 1)                           AS pcp_per_100k,
-        ROUND(CAST(OTHER_PRIMARY_CARE_PROVIDERS_RAW_VALUE AS FLOAT) * 100000, 1)                      AS other_pcp_per_100k,
+        -- Provider ratios (per 100,000 population)
+        ROUND(CAST(PRIMARY_CARE_PHYSICIANS_RAW_VALUE AS FLOAT) * 100000, 1)             AS pcp_per_100k,
+        ROUND(CAST(OTHER_PRIMARY_CARE_PROVIDERS_RAW_VALUE AS FLOAT) * 100000, 1)        AS other_pcp_per_100k,
+        
+        -- NULL indicates no PCP data available for this county
+        CASE 
+            WHEN PRIMARY_CARE_PHYSICIANS_RAW_VALUE IS NULL THEN 1 
+            ELSE 0 
+        END                                                       AS pcp_data_suppressed,
         
         -- Provider ratios (population per provider) - nulled when <= 0 (zero/no providers)
         ROUND(CASE 

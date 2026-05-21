@@ -45,6 +45,7 @@ final AS (
         premature_age_adj_mortality,
         black_white_hosp_gap,
         hispanic_white_hosp_gap,
+        preventable_stays_suppressed,
 
         -- Disease burden
         disease_burden_level,
@@ -69,9 +70,12 @@ final AS (
         uninsured_pct,
         median_household_income,
         children_in_poverty_pct,
-
+        pcp_data_suppressed, 
+        uninsured_suppressed,
+    
         -- ── Urban/Rural classification ────────────────────────────────
         CASE
+            WHEN pct_rural IS NULL THEN 'Unknown'
             WHEN pct_rural >= 50 THEN 'Rural'
             WHEN pct_rural >= 25 THEN 'Mixed'
             ELSE 'Urban'
@@ -104,7 +108,9 @@ final AS (
 
        -- ── Racial disparity flag ─────────────────────────────────────
         CASE
-            WHEN black_white_hosp_gap > 0 THEN 1 ELSE 0
+            WHEN black_white_hosp_gap IS NULL THEN NULL
+            WHEN black_white_hosp_gap > 0     THEN 1
+            ELSE 0
         END                                                     AS has_racial_disparity,
 
         -- ── Vulnerability score (0–5) ─────────────────────────────────

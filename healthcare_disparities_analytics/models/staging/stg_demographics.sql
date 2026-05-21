@@ -30,6 +30,13 @@ final AS (
         ROUND(CAST(UNINSURED_ADULTS_RAW_VALUE AS FLOAT) * 100, 1)             AS uninsured_adults_pct,
         ROUND(CAST(UNINSURED_CHILDREN_RAW_VALUE AS FLOAT) * 100, 1)           AS uninsured_children_pct,
 
+        -- NULL indicates no uninsured data available for this county
+         CASE
+            WHEN UNINSURED_RAW_VALUE IS NULL THEN 1
+            ELSE 0
+        END                                                                    AS uninsured_suppressed,
+
+
         -- Race/ethnicity composition
         ROUND(CAST("% Non-Hispanic Black raw value" AS FLOAT) * 100, 1)  AS pct_black,
         ROUND(CAST("% Hispanic raw value" AS FLOAT) * 100, 1)            AS pct_hispanic,

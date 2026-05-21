@@ -18,6 +18,12 @@ final AS (
         CAST(PREVENTABLE_HOSPITAL_STAYS_CI_LOW AS FLOAT)                    AS preventable_stays_ci_low,
         CAST(PREVENTABLE_HOSPITAL_STAYS_CI_HIGH AS FLOAT)                   AS preventable_stays_ci_high,
 
+         -- NULL indicates data suppressed for low-population counties
+        CASE
+            WHEN PREVENTABLE_HOSPITAL_STAYS_RAW_VALUE IS NULL THEN 1
+            ELSE 0
+        END                                                                   AS preventable_stays_suppressed,
+
         -- By race/ethnicity (equity analysis)
         CAST("Preventable Hospital Stays (AIAN)" AS FLOAT)                  AS preventable_stays_aian,
         CAST("Preventable Hospital Stays (Asian/Pacific Islander)" AS FLOAT) AS preventable_stays_asian,

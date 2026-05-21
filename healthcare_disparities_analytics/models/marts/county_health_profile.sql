@@ -74,6 +74,7 @@ final AS (
         demo.pct_asian,
         demo.pct_white,
         demo.pct_rural,
+        demo.uninsured_suppressed,
 
         -- Chronic disease burden
         d.diabetes_pct,
@@ -102,6 +103,7 @@ final AS (
         pca.pop_per_other_pcp,
         pca.pop_per_mental_health,
         pca.pop_per_dentist,
+        pca.pcp_data_suppressed,
 
         -- HPSA designation
         COALESCE(hpsa.is_hpsa_designated, 0)                   AS is_hpsa_designated,
@@ -151,6 +153,7 @@ final AS (
         ROUND(hosp.premature_age_adj_mortality, 1)      AS premature_age_adj_mortality,
         ROUND(hosp.infant_mortality_rate, 1)            AS infant_mortality_rate,
         ROUND(hosp.child_mortality_rate, 1)             AS child_mortality_rate,
+        hosp.preventable_stays_suppressed,
 
         -- Excess preventable hospitalizations
         ROUND(
