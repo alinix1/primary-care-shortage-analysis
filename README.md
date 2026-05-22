@@ -8,11 +8,11 @@
 
 A multi-source data analytics project encompassing an ELT pipeline, data warehouse, and
 interactive dashboard. Examines how primary care shortages correlate with
-chronic disease burden and preventable hospitalizations across 3,144 US counties using
+chronic disease burden and preventable hospitalizations across 2,957 US counties using
 Snowflake, dbt, SQL, and Plotly.
 
 **Problem Statement:** Over 92 million Americans live in designated primary care Health
-Professional Shortage Areas (HPSAs), a number that grew 21% in 2025 alone. However, the
+Professional Shortage Areas (HPSAs), a number that grew 21% in 2025 alone (HRSA, December 2025). However, the
 downstream health consequences of these shortages remain poorly quantified at the county
 level. This project investigates whether primary care shortages are associated with higher chronic
 disease prevalence and preventable hospitalization rates, and identifies which counties
