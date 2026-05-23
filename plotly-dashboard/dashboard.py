@@ -96,6 +96,11 @@ fig_scatter = px.scatter(
     x="CHILDREN_IN_POVERTY_PCT",
     y="EXCESS_PREVENTABLE_STAYS",
     color="URBAN_RURAL_CATEGORY",
+    color_discrete_map={
+        'Rural': '#6366F1',
+        'Micropolitan': '#F97316',
+        'Metro': '#10B981'
+    },
     hover_name="COUNTY_NAME",
     hover_data={
         "STATE_ABBR": True,
