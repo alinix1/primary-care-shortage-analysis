@@ -80,7 +80,7 @@ before development and built using Plotly Dash with a custom dark theme color pa
   - Download: https://data.cdc.gov/500-Cities-Places/PLACES-Local-Data-for-Better-Health-County-Data-20/swc5-untb/about_data
   - Release: 2025
   - Geo: County-level
-  - Main metrics: Chronic disease burden, pre/post COVID
+  - Main metrics: Chronic disease burden
   - Key measures: 12 health outcomes (arthritis, asthma, high blood pressure, cancer, high cholesterol, chronic kidney disease, chronic obstructive pulmonary disease, coronary heart disease, depression, diabetes, obesity, stroke), 7 preventive services, 4 health risk behaviors, 7 disabilities, 3 health status measures, 7 health-related social needs
 
 - HRSA Health Professional Shortage Areas (HPSA)
@@ -97,7 +97,6 @@ before development and built using Plotly Dash with a custom dark theme color pa
   - Geo: County-level
   - Main metrics: Overall medical underservice
   - Key measures: MUA/P Status Description, Designation Type, IMU Score, Population Type, Rural Status Description
-  - Useful measures: Percent of Population with Income at or Below 100% Poverty, Percentage of Population Age 65 and Over, Infant Mortality Rate, Providers per 1000 Population, Designation Population
 
 - HRSA Health Center Service Delivery and Look-Alike Sites (FQHCs)
   - Source: Health Resources & Services Administration (HRSA)
