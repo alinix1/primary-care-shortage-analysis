@@ -58,19 +58,23 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 ## Key Insights
 
-- **HPSA counties show consistently higher chronic disease burden** across all 11
-  conditions analyzed, with hypertension showing the largest gap (+2.29 percentage points higher vs non-HPSA).
+**HPSA counties show consistently higher chronic disease burden** 
 
-- **FQHCs alone are insufficient to offset hospitalization burden** they may be treating the sickest counties but can't fully compensate for systemic PCP gaps.
+- Results indicated that 10 out of 11 chronic conditions analyzed, hypertension showed the largest gap (+2.29 percentage points higher vs non-HPSA).
 
-- **The shortage itself may be contributing to worse chronic disease management over time** PCP shortages correlate more strongly with chronic disease than hospitalizations (diabetes r=0.39 vs hospitalization r=0.18), suggesting shortages drive worse disease management over time.
+**FQHCs alone are insufficient to offset hospitalization burden** 
 
-- **Triple burden counties are concentrated in the rural South and Appalachia**
+- Federally Qualified Health Centers (FQHC) may be treating the sickest counties but can't fully compensate for systemic PCP gaps.
 
-- **Scale of the problem is significant** findings point to 2,599 HPSA-designated counties, 671 counties
-  with high disease burden, and counties in the highest shortage quartile average 272+
-  excess preventable stays above the national average. St. Louis, MO alone has an estimated
-  3,379 preventable admissions annually.
+**The shortage itself may be contributing to worse chronic disease management over time** 
+
+- PCP shortages correlate more strongly with chronic disease than hospitalizations (diabetes r=0.39 vs hospitalization r=0.18), suggesting shortages drive worse disease management over time.
+
+**Triple burden counties are concentrated in the rural South and Appalachia**
+
+**Scale of the problem is significant**
+
+- Findings point to 2,599 HPSA-designated counties, 671 counties with high disease burden, and counties in the highest shortage quartile average 272+ excess preventable stays above the national average. St. Louis, MO alone has an estimated 3,379 preventable admissions annually.
 
 ## Data Sources
 
