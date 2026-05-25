@@ -74,7 +74,7 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 **Scale of the problem is significant**
 
-- Findings point to 2,599 HPSA-designated counties, 671 counties with high disease burden, and counties in the highest shortage quartile average 300+ excess preventable stays above the national average.
+- Findings point to 2,599 HPSA-designated counties, 671 counties with high disease burden, and counties in the highest shortage quartile averaged 481.9 excess preventable stays above the national average. 
 
 ## Data Sources
 
