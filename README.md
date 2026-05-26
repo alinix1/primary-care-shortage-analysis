@@ -66,6 +66,11 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 - Federally Qualified Health Centers (FQHC) may be treating the sickest counties but can't fully compensate for systemic PCP gaps.
 
+**Disease burden is the strongest predictor of preventable hospitalizations**
+
+- High disease burden counties average 482 excess preventable stays per 100K 
+  population above the national average — nearly 850 more than low burden counties.
+
 **The shortage itself may be contributing to worse chronic disease management over time** 
 
 - PCP shortages correlate more strongly with chronic disease than hospitalizations (diabetes r=0.39 vs hospitalization r=0.18), suggesting shortages drive worse disease management over time.
