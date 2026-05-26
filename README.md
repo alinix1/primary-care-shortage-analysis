@@ -58,20 +58,20 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 ## Key Insights
 
-**HPSA counties show consistently higher chronic disease burden** 
+**HPSA counties show consistently higher chronic disease burden**
 
 - Across 10 of 11 conditions analyzed, hypertension showed the largest gap (+2.29 percentage points higher vs non-HPSA).
 
-**FQHCs alone are insufficient to offset hospitalization burden** 
+**FQHCs alone are insufficient to offset hospitalization burden**
 
 - Federally Qualified Health Centers (FQHC) may be treating the sickest counties but can't fully compensate for systemic PCP gaps.
 
 **Disease burden is the strongest predictor of preventable hospitalizations**
 
-- High disease burden counties average 482 excess preventable stays per 100K 
+- High disease burden counties average 482 excess preventable stays per 100K
   population above the national average — nearly 850 more than low burden counties.
 
-**The shortage itself may be contributing to worse chronic disease management over time** 
+**The shortage itself may be contributing to worse chronic disease management over time**
 
 - PCP shortages correlate more strongly with chronic disease than hospitalizations (diabetes r=0.39 vs hospitalization r=0.18), suggesting shortages drive worse disease management over time.
 
@@ -79,7 +79,7 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 **Scale of the problem is significant**
 
-- Findings point to 2,599 HPSA-designated counties, 671 counties with high disease burden, and counties in the highest shortage quartile averaged ~261 excess preventable stays above the national average. 
+- Findings point to 2,599 HPSA-designated counties, 671 counties with high disease burden, and counties in the highest shortage quartile averaged ~261 excess preventable stays above the national average.
 
 ## Data Sources
 
