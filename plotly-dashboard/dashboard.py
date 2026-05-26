@@ -185,7 +185,7 @@ fig_fqhc.update_layout(
 bar_data = pd.DataFrame(
     {
         "HPSA_QUARTILE": ["Q1 (Lowest)", "Q2", "Q3", "Q4 (Highest)"],
-        "AVG_EXCESS_STAYS": [-239.4, -80.4, -15.1, 272.7],
+        "AVG_EXCESS_STAYS": [-225.9, -87.4, -9.4, 260.5],
     }
 )
 
