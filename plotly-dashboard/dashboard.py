@@ -400,23 +400,6 @@ fig_geo.update_layout(
     ),
 )
 
-# --- Priority Rankings Table ---
-priority_top = priority_counties.sort_values("PRIORITY_RANK").head(10)
-
-priority_cols = [
-    "PRIORITY_RANK",
-    "COUNTY_NAME",
-    "STATE_ABBR",
-    "INTERVENTION_TIER",
-    "PRIORITY_SCORE",
-    "HPSA_SEVERITY_TIER",
-    "DISEASE_BURDEN_LEVEL",
-    "EXCESS_PREVENTABLE_STAYS",
-    "URBAN_RURAL_CATEGORY",
-]
-
-priority_data = priority_top[priority_cols].round(1).to_dict("records")
-
 # --- App setup ---
 app = dash.Dash(__name__)
 
@@ -480,7 +463,7 @@ app.layout = html.Div(
                                 "margin": "0",
                             },
                         ),
-                        html.H2("69", style={"color": "#38BDF8", "margin": "4px 0 0"}),
+                        html.H2("59", style={"color": "#38BDF8", "margin": "4px 0 0"}),
                     ],
                 ),
                 html.Div(
@@ -500,7 +483,7 @@ app.layout = html.Div(
                             },
                         ),
                         html.H2(
-                            "272+", style={"color": "#38BDF8", "margin": "4px 0 0"}
+                            "261", style={"color": "#38BDF8", "margin": "4px 0 0"}
                         ),
                     ],
                 ),
@@ -641,7 +624,7 @@ app.layout = html.Div(
                     },
                 ),
                 html.P(
-                    "Counties in the highest shortage quartile average 272.7 excess stays above the national average",
+                    "Counties in the highest shortage quartile average ~261 excess stays above the national average",
                     style={
                         "color": "#64748B",
                         "fontSize": "11px",
@@ -776,69 +759,6 @@ app.layout = html.Div(
                 ),
                 dcc.Graph(
                     id="bar-geo", figure=fig_geo, config={"displayModeBar": False}
-                ),
-            ],
-        ),
-        # Ranking table 2
-        html.Div(
-            style={
-                "backgroundColor": "#1E293B",
-                "padding": "16px",
-                "borderRadius": "8px",
-                "marginBottom": "16px",
-            },
-            children=[
-                html.H3(
-                    "Top 10 Priority Counties for Intervention",
-                    style={
-                        "color": "#94A3B8",
-                        "fontSize": "13px",
-                        "marginBottom": "4px",
-                    },
-                ),
-                html.P(
-                    "Ranked by composite score across shortage severity, disease burden, hospitalization outcomes, PCP gap, and uninsured rates",
-                    style={
-                        "color": "#64748B",
-                        "fontSize": "11px",
-                        "marginBottom": "8px",
-                    },
-                ),
-                dash_table.DataTable(
-                    id="table-priority-ranking",
-                    columns=[
-                        {"name": col.replace("_", " ").title(), "id": col}
-                        for col in priority_cols
-                    ],
-                    data=priority_data,
-                    sort_action="native",
-                    page_size=10,
-                    style_table={"overflowX": "auto"},
-                    style_cell={
-                        "backgroundColor": "#1E293B",
-                        "color": "#F1F5F9",
-                        "border": "1px solid #334155",
-                        "fontSize": "12px",
-                        "padding": "8px",
-                        "textAlign": "left",
-                    },
-                    style_header={
-                        "backgroundColor": "#0F172A",
-                        "color": "#94A3B8",
-                        "fontWeight": "bold",
-                        "border": "1px solid #334155",
-                    },
-                    style_data_conditional=[
-                        {"if": {"row_index": "odd"}, "backgroundColor": "#162032"},
-                        {
-                            "if": {
-                                "filter_query": '{INTERVENTION_TIER} = "Tier 2 - High Priority"',
-                                "column_id": "INTERVENTION_TIER",
-                            },
-                            "color": "#EF4444",
-                            "fontWeight": "bold",
-                        },
-                    ],
                 ),
             ],
         ),
