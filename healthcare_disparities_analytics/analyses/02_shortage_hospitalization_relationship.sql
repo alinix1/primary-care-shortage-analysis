@@ -8,15 +8,7 @@
 --                 whether hospitalization burden increases monotonically with shortage severity
 -- Tables: county_health_profile
 -- Last updated: 2026-05-07
--- Key finding: HPSA score weakly predicts hospitalization rates (r=0.18). Pearson and Spearman
---              correlations were confirmed nearly identical across all variables (difference < 0.03),
---              indicating results are robust. HPSA score moderately predicts chronic disease
---              prevalence (diabetes r=0.38, hypertension r=0.35), suggesting shortage severity
---              impacts outcomes through chronic disease burden rather than directly driving
---              hospitalizations. Quartile analysis confirms a monotonic relationship — counties
---              in the highest HPSA quartile (avg score 20.6) average 272.7 excess preventable
---              stays above the national rate, compared to -239.4 in the lowest quartile
---              (avg score 11.5), with the most severe burden concentrated in Q4.
+
 
 -- 1. Pearson Correlation: HPSA score vs excess preventable stays
 SELECT CORR(hpsa_score, excess_preventable_stays) AS correlation

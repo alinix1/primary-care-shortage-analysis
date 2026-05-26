@@ -6,13 +6,6 @@
 --              (736 counties for hispanic-white gap, 1,217 for black-white gap).
 -- Table: county_health_profile
 -- Last updated: 2026-05-07
--- Key findings:
---              Child poverty rate is the strongest predictor in this analysis (r=0.34),
---              exceeding HPSA score (r=0.18) as a correlate of excess preventable stays.
---              Uninsured rate shows a weak positive relationship (r=0.15). Racial disparity
---              gaps show similar weak positive correlations (black-white r=0.12,
---              hispanic-white r=0.12), though these are computed on a limited subset of
---              counties with sufficient population data and should be interpreted cautiously.
 
 -- 1. Poverty and insurance: correlations with excess preventable stays
 SELECT
