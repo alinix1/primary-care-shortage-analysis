@@ -60,7 +60,7 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 **HPSA counties show consistently higher chronic disease burden** 
 
-- Results indicated that 10 out of 11 chronic conditions analyzed, hypertension showed the largest gap (+2.29 percentage points higher vs non-HPSA).
+- Across 10 of 11 conditions analyzed, hypertension showed the largest gap (+2.29 percentage points higher vs non-HPSA).
 
 **FQHCs alone are insufficient to offset hospitalization burden** 
 
@@ -70,11 +70,11 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 - PCP shortages correlate more strongly with chronic disease than hospitalizations (diabetes r=0.39 vs hospitalization r=0.18), suggesting shortages drive worse disease management over time.
 
-**Triple burden counties are concentrated in the rural South and Appalachia**
+**Triple burden counties are concentrated in the Deep South and rural Midwest**
 
 **Scale of the problem is significant**
 
-- Findings point to 2,599 HPSA-designated counties, 671 counties with high disease burden, and counties in the highest shortage quartile averaged __ excess preventable stays above the national average. 
+- Findings point to 2,599 HPSA-designated counties, 671 counties with high disease burden, and counties in the highest shortage quartile averaged ~261 excess preventable stays above the national average. 
 
 ## Data Sources
 
