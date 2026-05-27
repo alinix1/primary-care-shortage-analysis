@@ -367,14 +367,14 @@ Then open `http://127.0.0.1:8050` in your browser.
 
 - **dbt pipeline** with staging, intermediate, and marts layers transforming 6 raw data sources into analytical datasets
 - **4 processed datasets** exported as CSV for reproducibility (`county_health_profile`, `access_impact_analysis`, `priority_counties_ranking`, `regional_patterns`)
-- **Interactive Plotly dashboard** with choropleth maps, bar charts, scatter plots, table, and heat map visualizing shortage severity, disease burden, and preventable hospitalizations
-- **Jupyter notebook** with full end-to-end analysis workflow including SQL queries, statistical correlations, and key findings
+- **Interactive Plotly dashboard** with choropleth maps, bar charts, scatter plots, and heat map visualizing shortage severity, disease burden, and preventable hospitalizations
+- **Jupyter notebooks** with full end-to-end analysis workflow including exploratory data analysis, statistical testing (descriptive statistics, correlations, t-tests, ANOVA, chi-squared), and interpretation of key findings
 
 ## Roadmap
 
 - **Pre/post COVID trend analysis** — compare chronic disease prevalence between 2021 and 2025 releases
 - **Regional patterns dashboard integration** — incorporate state-level summary data into the Plotly dashboard
-- **Multivariate regression or logistic regression analysis** — to model excess preventable stays across multiple predictors simultaneously and quantify independent contributions
+**Multiple regression or logistic regression analysis** — to model excess preventable stays or above-average hospitalization risk across multiple predictors simultaneously and quantify independent contributions
 
 ## Author
 
