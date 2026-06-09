@@ -54,7 +54,7 @@ in Snowflake to answer each research question, including...
 Dashboard layout was planned in [Figma](https://www.figma.com/design/W51QZYKUW8KN1E2wpoLOE4/Primary-Care-Shortage-Dashboard?node-id=0-1&t=LQVn5JJzD6nr7jeb-1)
 before development and built using Plotly Dash with a custom dark theme color palette.
 
-> **Note:** Approximately 187 counties are absent from the CDC PLACES 2025 source data and are therefore excluded from all analyses. An additional 220 counties are excluded from the priority ranking model due to suppressed hospitalization, PCP, or uninsured data.
+> **Note:** The CDC PLACES 2025 source data covers 3,144 US counties and county-equivalents. An additional 230 counties are excluded from the priority ranking model due to suppressed hospitalization, PCP, or uninsured data.
 
 ## Key Insights
 
