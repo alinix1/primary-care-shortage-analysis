@@ -8,7 +8,7 @@
 
 A multi-source data analytics project encompassing an ELT pipeline, data warehouse, and
 interactive dashboard. Examines how primary care shortages correlate with
-chronic disease burden and preventable hospitalizations across 2,957 US counties using
+chronic disease burden and preventable hospitalizations across 3,144 US counties using
 Snowflake, dbt, SQL, and Plotly.
 
 **Problem Statement:** Over 92 million Americans live in designated primary care Health
@@ -31,7 +31,7 @@ coverage.
 
 Data from 6 sources was ingested into Snowflake and transformed using a dbt pipeline
 with staging, intermediate, and mart layers. County-level metrics were joined on FIPS
-codes to create a unified analytical dataset covering 2,957 US counties.
+codes to create a unified analytical dataset covering 3,144 US counties.
 
 **SQL Analysis** queries were drafted in VSCode in the `/analyses` folder and executed
 in Snowflake to answer each research question, including...
@@ -143,7 +143,7 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 ### county_health_profile.csv
 
-Primary analytical dataset with health, demographic, and access metrics for all 2,957 US counties.
+Primary analytical dataset with health, demographic, and access metrics for all 3,144 US counties.
 
 | Column                   | Description                                                                                                   | Type    |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------- | ------- |
