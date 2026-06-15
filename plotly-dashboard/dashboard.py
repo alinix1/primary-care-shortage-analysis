@@ -133,8 +133,8 @@ fqhc_data = pd.DataFrame(
             "Shortage, No FQHC",
             "No Shortage, No FQHC",
         ],
-        "AVG_EXCESS_STAYS": [36.3, -71.9, -157.2, -247.2],
-        "COUNTY_COUNT": [1880, 177, 719, 181],
+        "AVG_EXCESS_STAYS": [86.5, -70.4, -142.8, -249.4],
+        "COUNTY_COUNT": [2024, 192, 742, 186],
     }
 )
 
@@ -185,7 +185,7 @@ fig_fqhc.update_layout(
 bar_data = pd.DataFrame(
     {
         "HPSA_QUARTILE": ["Q1 (Lowest)", "Q2", "Q3", "Q4 (Highest)"],
-        "AVG_EXCESS_STAYS": [-225.9, -87.4, -9.4, 260.5],
+        "AVG_EXCESS_STAYS": [-183.2, -88.6, 45, 333.9],
     }
 )
 
@@ -443,7 +443,7 @@ app.layout = html.Div(
                             },
                         ),
                         html.H2(
-                            "2,599", style={"color": "#38BDF8", "margin": "4px 0 0"}
+                            "2,766", style={"color": "#38BDF8", "margin": "4px 0 0"}
                         ),
                     ],
                 ),
@@ -463,7 +463,7 @@ app.layout = html.Div(
                                 "margin": "0",
                             },
                         ),
-                        html.H2("59", style={"color": "#38BDF8", "margin": "4px 0 0"}),
+                        html.H2("63", style={"color": "#38BDF8", "margin": "4px 0 0"}),
                     ],
                 ),
                 html.Div(
@@ -483,7 +483,7 @@ app.layout = html.Div(
                             },
                         ),
                         html.H2(
-                            "261", style={"color": "#38BDF8", "margin": "4px 0 0"}
+                            "346", style={"color": "#38BDF8", "margin": "4px 0 0"}
                         ),
                     ],
                 ),
@@ -624,7 +624,7 @@ app.layout = html.Div(
                     },
                 ),
                 html.P(
-                    "Counties in the highest shortage quartile average ~261 excess stays above the national average",
+                    "Counties in the highest shortage quartile average ~346 excess stays above the national average",
                     style={
                         "color": "#64748B",
                         "fontSize": "11px",
