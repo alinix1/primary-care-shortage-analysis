@@ -185,7 +185,7 @@ fig_fqhc.update_layout(
 bar_data = pd.DataFrame(
     {
         "HPSA_QUARTILE": ["Q1 (Lowest)", "Q2", "Q3", "Q4 (Highest)"],
-        "AVG_EXCESS_STAYS": [-183.2, -88.6, 45, 333.9],
+        "AVG_EXCESS_STAYS": [-205.1, -69, 52, 329.2],
     }
 )
 
@@ -483,7 +483,7 @@ app.layout = html.Div(
                             },
                         ),
                         html.H2(
-                            "346", style={"color": "#38BDF8", "margin": "4px 0 0"}
+                            "300+", style={"color": "#38BDF8", "margin": "4px 0 0"}
                         ),
                     ],
                 ),
@@ -624,7 +624,7 @@ app.layout = html.Div(
                     },
                 ),
                 html.P(
-                    "Counties in the highest shortage quartile average ~346 excess stays above the national average",
+                    "Counties in the highest shortage quartile average 300+ more excess stays above the national average",
                     style={
                         "color": "#64748B",
                         "fontSize": "11px",
