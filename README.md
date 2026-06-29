@@ -68,8 +68,7 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 **Disease burden is the strongest predictor of preventable hospitalizations**
 
-- High disease burden counties average 482 excess preventable stays per 100K
-  population above the national average — nearly 850 more than low burden counties.
+- High disease burden counties average 482 excess preventable stays per 100,000 Medicare enrollees above the national average — nearly 850 more than low burden counties.
 
 **The shortage itself may be contributing to worse chronic disease management over time**
 
@@ -79,7 +78,7 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 **Scale of the problem is significant**
 
-- Findings point to 2,599 HPSA-designated counties, 671 counties with high disease burden, and counties in the highest shortage quartile averaged ~261 excess preventable stays above the national average.
+- Findings point to 2,766 HPSA-designated counties, 671 counties with high disease burden, and counties in the highest shortage quartile averaged 300+ more excess preventable stays above the national average.
 
 ## Data Sources
 
@@ -368,13 +367,13 @@ Then open `http://127.0.0.1:8050` in your browser.
 - **dbt pipeline** with staging, intermediate, and marts layers transforming 6 raw data sources into analytical datasets
 - **4 processed datasets** exported as CSV for reproducibility (`county_health_profile`, `access_impact_analysis`, `priority_counties_ranking`, `regional_patterns`)
 - **Interactive Plotly dashboard** with choropleth maps, bar charts, scatter plots, and heat map visualizing shortage severity, disease burden, and preventable hospitalizations
-- **Jupyter notebooks** with full end-to-end analysis workflow including exploratory data analysis, statistical testing (descriptive statistics, correlations, t-tests, ANOVA, chi-squared), and interpretation of key findings (https://nbviewer.org/github/alinix1/primary-care-shortage-analysis/blob/master/jupyter-notebooks/primary_care_shortage_analysis.ipynb) 
+- **Jupyter notebooks** with full end-to-end analysis workflow including exploratory data analysis, statistical testing (descriptive statistics, correlations, t-tests, ANOVA, chi-squared), and interpretation of key findings (https://github.com/alinix1/primary-care-shortage-analysis/blob/master/jupyter-notebooks/primary_care_shortage_analysis.ipynb)
 
 ## Roadmap
 
 - **Pre/post COVID trend analysis** — compare chronic disease prevalence between 2021 and 2025 releases
 - **Regional patterns dashboard integration** — incorporate state-level summary data into the Plotly dashboard
-**Multiple regression or logistic regression analysis** — to model excess preventable stays or above-average hospitalization risk across multiple predictors simultaneously and quantify independent contributions
+  **Multiple regression or logistic regression analysis** — to model excess preventable stays or above-average hospitalization risk across multiple predictors simultaneously and quantify independent contributions
 
 ## Author
 
