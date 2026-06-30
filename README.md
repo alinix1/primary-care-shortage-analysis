@@ -72,7 +72,7 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 **The shortage itself may be contributing to worse chronic disease management over time**
 
-- PCP shortages correlate more strongly with chronic disease than hospitalizations (diabetes r=0.39 vs hospitalization r=0.18), suggesting shortages drive worse disease management over time.
+- PCP shortages correlate more strongly with chronic disease than hospitalizations (diabetes r=0.39 vs hospitalization r=0.18), suggesting shortages may contribute to worse disease management over time.
 
 **Triple burden counties are concentrated in the Deep South and rural Midwest**
 
