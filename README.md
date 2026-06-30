@@ -30,7 +30,7 @@ coverage.
 ## Methodology
 
 Data from 6 sources was ingested into Snowflake and transformed using a dbt pipeline
-with staging, intermediate, and mart layers. County-level indicators were joined on FIPS
+with staging, intermediate, and mart layers. County-level variables were joined on FIPS
 codes to create a unified analytical dataset covering 3,144 US counties.
 
 **SQL Analysis** queries were drafted in VSCode in the `/analyses` folder and executed
