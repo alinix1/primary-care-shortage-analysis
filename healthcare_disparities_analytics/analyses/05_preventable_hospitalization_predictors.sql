@@ -5,7 +5,7 @@
 --              2. Disease burden level (High/Moderate/Low) vs average excess stays
 --              3. PCP rate per 100k (PCP ratio) vs excess preventable stays
 -- Tables: county_health_profile
--- Last updated: 2026-05-07
+-- Last updated: 2026-06-30
 -- Key findings:
 --              IMU score shows negligible correlation with hospitalizations (r=0.03),
 --              suggesting IMU designation does not predict preventable stays the way
@@ -31,7 +31,7 @@ WHERE disease_burden_level IS NOT NULL
 GROUP BY disease_burden_level
 ORDER BY avg_excess_stays DESC;
 
--- PCP ratio
+-- Correlation: PCP supply vs excess preventable hospitalizations
 SELECT CORR(pcp_per_100k, excess_preventable_stays) AS pcp_vs_hosp
 FROM PCP_SHORTAGE_ANALYTICS.RAW_DATA.COUNTY_HEALTH_PROFILE
 WHERE pcp_per_100k IS NOT NULL

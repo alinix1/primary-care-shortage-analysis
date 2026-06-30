@@ -7,7 +7,7 @@
 --                 comparing average excess preventable stays across groups to identify
 --                 whether hospitalization burden increases monotonically with shortage severity
 -- Tables: county_health_profile
--- Last updated: 2026-05-07
+-- Last updated: 2026-06-30
 
 
 -- 1. Pearson Correlation: HPSA score vs excess preventable stays
@@ -16,7 +16,7 @@ FROM PCP_SHORTAGE_ANALYTICS.RAW_DATA.COUNTY_HEALTH_PROFILE
 WHERE hpsa_score IS NOT NULL 
   AND excess_preventable_stays IS NOT NULL;
 
--- 2. Correlation matrix: HPSA score vs chronic disease measures
+-- 2. Pearson correlations: HPSA score vs chronic disease measures and hospitalizations
 SELECT 
     CORR(hpsa_score, excess_preventable_stays)  AS hpsa_vs_hosp,
     CORR(hpsa_score, diabetes_pct)              AS hpsa_vs_diabetes,
@@ -29,7 +29,7 @@ WHERE hpsa_score IS NOT NULL
     AND obesity_pct IS NOT NULL 
     AND hypertension_pct IS NOT NULL; 
 
--- 3. Quartile analysis: shortage severity trend vs hospitalization rates
+-- 3. Quartile analysis: average excess preventable stays by HPSA severity quartile
 SELECT
     hpsa_quartile,
     ROUND(AVG(hpsa_score), 1)               AS avg_hpsa_score,

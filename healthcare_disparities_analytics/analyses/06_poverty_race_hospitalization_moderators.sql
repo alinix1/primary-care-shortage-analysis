@@ -5,9 +5,9 @@
 --              subset of counties with sufficient population data for disparity calculation
 --              (736 counties for hispanic-white gap, 1,217 for black-white gap).
 -- Table: county_health_profile
--- Last updated: 2026-05-07
+-- Last updated: 2026-06-30
 
--- 1. Poverty and insurance: correlations with excess preventable stays
+-- 1. Poverty and uninsured rate: correlations with excess preventable stays
 SELECT
     CORR(uninsured_pct, excess_preventable_stays)           AS uninsured_vs_hosp,
     CORR(children_in_poverty_pct, excess_preventable_stays) AS poverty_vs_hosp
