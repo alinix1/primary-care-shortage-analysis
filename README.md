@@ -68,7 +68,7 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 **Disease burden is the strongest predictor of preventable hospitalizations**
 
-- High disease burden counties average 482 excess preventable stays per 100,000 Medicare enrollees above the national average — nearly 850 more than low burden counties.
+- High disease burden counties average 482 excess preventable stays per 100,000 Medicare enrollees above the national average, nearly 850 more than low burden counties.
 
 **The shortage itself may be contributing to worse chronic disease management over time**
 
@@ -371,8 +371,8 @@ Then open `http://127.0.0.1:8050` in your browser.
 
 ## Roadmap
 
-- **Pre/post COVID trend analysis** compare chronic disease prevalence between 2021 and 2025 releases
-- **Regional patterns dashboard integration** incorporate state-level summary data into the Plotly dashboard
+- **Pre/post COVID trend analysis** to compare chronic disease prevalence between 2021 and 2025 releases
+- **Regional patterns dashboard integration** to incorporate state-level summary data into the Plotly dashboard
 - **Multiple regression or logistic regression analysis** to model excess preventable stays or above-average hospitalization risk across multiple predictors simultaneously and quantify independent contributions
 
 ## Author
