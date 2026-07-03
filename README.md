@@ -37,10 +37,10 @@ codes to create a unified analytical dataset covering 3,144 US counties.
 in Snowflake to answer each research question, including...
 
 - Chronic disease prevalence comparisons between HPSA and non-HPSA counties
-- Pearson and Spearman correlation and quartile analysis of shortage severity vs hospitalization rates
+- Pearson and Spearman correlation and quartile analysis of shortage severity and hospitalization rates
 - Triple burden county identification (shortage + high disease + excess hospitalizations)
 - FQHC effectiveness by shortage status (categorical group comparison)
-- Predictors of preventable hospitalizations (disease burden, PCP ratio, poverty, race, rurality)
+- Predictors of preventable hospitalizations (disease burden, PCP per 100k, poverty, race, rurality)
 - Geographic distribution of shortage + high disease burden counties by state
 
 **Data Export & Visualization** analytical outputs were exported as CSV to
@@ -72,7 +72,7 @@ before development and built using Plotly Dash with a custom dark theme color pa
 
 **The shortage itself may be contributing to worse chronic disease management over time**
 
-- PCP shortages correlate more strongly with chronic disease than hospitalizations (diabetes r=0.39 vs hospitalization r=0.18), suggesting shortages may contribute to worse disease management over time.
+- PCP shortages correlate more strongly with chronic disease than hospitalizations (diabetes r=0.39, hospitalization r=0.18), suggesting shortages may contribute to worse disease management over time.
 
 **Triple burden counties are concentrated in the Deep South and rural Midwest**
 
